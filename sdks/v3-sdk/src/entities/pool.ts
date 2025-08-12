@@ -1,13 +1,33 @@
-import { BigintIsh, CurrencyAmount, Price, Token } from '@uniswap/sdk-core'
 import JSBI from 'jsbi'
 import invariant from 'tiny-invariant'
-import { FACTORY_ADDRESS, FeeAmount, TICK_SPACINGS } from '../constants'
-import { NEGATIVE_ONE, Q192 } from '../internalConstants'
+
+import {
+  BigintIsh,
+  CurrencyAmount,
+  Price,
+  Token,
+} from '@uniswap/sdk-core'
+
+import {
+  FACTORY_ADDRESS,
+  FeeAmount,
+  TICK_SPACINGS,
+} from '../constants'
+import {
+  NEGATIVE_ONE,
+  Q192,
+} from '../internalConstants'
 import { computePoolAddress } from '../utils/computePoolAddress'
-import { v3Swap } from '../utils/v3swap'
 import { TickMath } from '../utils/tickMath'
-import { Tick, TickConstructorArgs } from './tick'
-import { NoTickDataProvider, TickDataProvider } from './tickDataProvider'
+import { v3Swap } from '../utils/v3swap'
+import {
+  Tick,
+  TickConstructorArgs,
+} from './tick'
+import {
+  NoTickDataProvider,
+  TickDataProvider,
+} from './tickDataProvider'
 import { TickListDataProvider } from './tickListDataProvider'
 
 /**

@@ -1,9 +1,13 @@
 import { pack } from '@ethersproject/solidity'
-import { Currency, Token } from '@uniswap/sdk-core'
-import { Pool } from '@uniswap/v3-sdk'
+import {
+  Currency,
+  Token,
+} from '@uniswap/sdk-core'
 import { Pair } from '@uniswap/v2-sdk'
-import { MixedRouteSDK } from '../entities/mixedRoute/route'
+import { Pool } from '@uniswap/v3-sdk'
+
 import { V2_FEE_PATH_PLACEHOLDER } from '../constants'
+import { MixedRouteSDK } from '../entities/mixedRoute/route'
 
 /**
  * Converts a route to a hex encoded path
@@ -25,13 +29,17 @@ export function encodeMixedRouteToPath(route: MixedRouteSDK<Currency, Currency>)
         return {
           inputToken: outputToken,
           types: ['address', 'uint24', 'address'],
-          path: [inputToken.address, pool instanceof Pool ? pool.fee : V2_FEE_PATH_PLACEHOLDER, outputToken.address],
+          path: [
+            inputToken.address,
+            pool instanceof Pool ? pool.tickSpacing : V2_FEE_PATH_PLACEHOLDER,
+            outputToken.address,
+          ],
         }
       } else {
         return {
           inputToken: outputToken,
           types: [...types, 'uint24', 'address'],
-          path: [...path, pool instanceof Pool ? pool.fee : V2_FEE_PATH_PLACEHOLDER, outputToken.address],
+          path: [...path, pool instanceof Pool ? pool.tickSpacing : V2_FEE_PATH_PLACEHOLDER, outputToken.address],
         }
       }
     },

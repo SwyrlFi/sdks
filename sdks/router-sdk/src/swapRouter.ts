@@ -1,9 +1,21 @@
+import JSBI from 'jsbi'
+import invariant from 'tiny-invariant'
+
 import { Interface } from '@ethersproject/abi'
-import { Currency, CurrencyAmount, Percent, TradeType, validateAndParseAddress, WETH9 } from '@uniswap/sdk-core'
-import { abi } from '@uniswap/swap-router-contracts/artifacts/contracts/interfaces/ISwapRouter02.sol/ISwapRouter02.json'
-import { Trade as V2Trade } from '@uniswap/v2-sdk'
 import {
-  encodeRouteToPath,
+  Currency,
+  CurrencyAmount,
+  Percent,
+  TradeType,
+  validateAndParseAddress,
+  WETH9,
+} from '@uniswap/sdk-core'
+import {
+  encodeV2PathToRoutes,
+  Trade as V2Trade,
+  V2RouteStruct,
+} from '@uniswap/v2-sdk'
+import {
   FeeOptions,
   MethodParameters,
   Payments,
@@ -14,19 +26,36 @@ import {
   toHex,
   Trade as V3Trade,
 } from '@uniswap/v3-sdk'
-import invariant from 'tiny-invariant'
-import JSBI from 'jsbi'
-import { ADDRESS_THIS, MSG_SENDER } from './constants'
-import { ApproveAndCall, ApprovalTypes, CondensedAddLiquidityOptions } from './approveAndCall'
-import { Trade } from './entities/trade'
-import { Protocol } from './entities/protocol'
-import { MixedRoute, RouteV2, RouteV3 } from './entities/route'
-import { MulticallExtended, Validation } from './multicallExtended'
-import { PaymentsExtended } from './paymentsExtended'
-import { MixedRouteTrade } from './entities/mixedRoute/trade'
-import { encodeMixedRouteToPath } from './utils/encodeMixedRouteToPath'
+
+import {
+  ApprovalTypes,
+  ApproveAndCall,
+  CondensedAddLiquidityOptions,
+} from './approveAndCall'
+import {
+  ADDRESS_THIS,
+  MSG_SENDER,
+} from './constants'
 import { MixedRouteSDK } from './entities/mixedRoute/route'
-import { partitionMixedRouteByProtocol, getOutputOfPools } from './utils'
+import { MixedRouteTrade } from './entities/mixedRoute/trade'
+import { Protocol } from './entities/protocol'
+import {
+  MixedRoute,
+  RouteV2,
+  RouteV3,
+} from './entities/route'
+import { Trade } from './entities/trade'
+import {
+  MulticallExtended,
+  Validation,
+} from './multicallExtended'
+import { PaymentsExtended } from './paymentsExtended'
+import { SwapRouter02ABI as abi } from './router02ABI'
+import {
+  getOutputOfPools,
+  partitionMixedRouteByProtocol,
+} from './utils'
+import { encodeV3RouteWithTickSpacing } from './utils/encodeV3RouteWithTickSpacing'
 
 const ZERO = JSBI.BigInt(0)
 const REFUND_ETH_PRICE_IMPACT_THRESHOLD = new Percent(JSBI.BigInt(50), JSBI.BigInt(100))
@@ -90,14 +119,7 @@ export abstract class SwapRouter {
    */
   private constructor() {}
 
-  /**
-   * @notice Generates the calldata for a Swap with a V2 Route.
-   * @param trade The V2Trade to encode.
-   * @param options SwapOptions to use for the trade.
-   * @param routerMustCustody Flag for whether funds should be sent to the router
-   * @param performAggregatedSlippageCheck Flag for whether we want to perform an aggregated slippage check
-   * @returns A string array of calldatas for the trade.
-   */
+  // ...
   private static encodeV2Swap(
     trade: V2Trade<Currency, Currency, TradeType>,
     options: SwapOptions,
@@ -107,7 +129,7 @@ export abstract class SwapRouter {
     const amountIn: string = toHex(trade.maximumAmountIn(options.slippageTolerance).quotient)
     const amountOut: string = toHex(trade.minimumAmountOut(options.slippageTolerance).quotient)
 
-    const path = trade.route.path.map((token) => token.address)
+    const routes: V2RouteStruct[] = encodeV2PathToRoutes(trade.route.path)
     const recipient = routerMustCustody
       ? ADDRESS_THIS
       : typeof options.recipient === 'undefined'
@@ -115,11 +137,11 @@ export abstract class SwapRouter {
       : validateAndParseAddress(options.recipient)
 
     if (trade.tradeType === TradeType.EXACT_INPUT) {
-      const exactInputParams = [amountIn, performAggregatedSlippageCheck ? 0 : amountOut, path, recipient]
+      const exactInputParams = [amountIn, performAggregatedSlippageCheck ? 0 : amountOut, routes, recipient]
 
       return SwapRouter.INTERFACE.encodeFunctionData('swapExactTokensForTokens', exactInputParams)
     } else {
-      const exactOutputParams = [amountOut, amountIn, path, recipient]
+      const exactOutputParams = [amountOut, amountIn, routes, recipient]
 
       return SwapRouter.INTERFACE.encodeFunctionData('swapTokensForExactTokens', exactOutputParams)
     }
@@ -159,7 +181,7 @@ export abstract class SwapRouter {
           const exactInputSingleParams = {
             tokenIn: route.tokenPath[0].address,
             tokenOut: route.tokenPath[1].address,
-            fee: route.pools[0].fee,
+            tickSpacing: route.pools[0].tickSpacing,
             recipient,
             amountIn,
             amountOutMinimum: performAggregatedSlippageCheck ? 0 : amountOut,
@@ -171,7 +193,7 @@ export abstract class SwapRouter {
           const exactOutputSingleParams = {
             tokenIn: route.tokenPath[0].address,
             tokenOut: route.tokenPath[1].address,
-            fee: route.pools[0].fee,
+            tickSpacing: route.pools[0].tickSpacing,
             recipient,
             amountOut,
             amountInMaximum: amountIn,
@@ -181,7 +203,7 @@ export abstract class SwapRouter {
           calldatas.push(SwapRouter.INTERFACE.encodeFunctionData('exactOutputSingle', [exactOutputSingleParams]))
         }
       } else {
-        const path: string = encodeRouteToPath(route, trade.tradeType === TradeType.EXACT_OUTPUT)
+        const path: string = encodeV3RouteWithTickSpacing(route)
 
         if (trade.tradeType === TradeType.EXACT_INPUT) {
           const exactInputParams = {
@@ -251,7 +273,7 @@ export abstract class SwapRouter {
           const exactInputSingleParams = {
             tokenIn: route.path[0].address,
             tokenOut: route.path[1].address,
-            fee: (route.pools as Pool[])[0].fee,
+            tickSpacing: (route.pools as Pool[])[0].tickSpacing,
             recipient,
             amountIn,
             amountOutMinimum: performAggregatedSlippageCheck ? 0 : amountOut,
@@ -260,9 +282,9 @@ export abstract class SwapRouter {
 
           calldatas.push(SwapRouter.INTERFACE.encodeFunctionData('exactInputSingle', [exactInputSingleParams]))
         } else {
-          const path = route.path.map((token) => token.address)
+          const routes = encodeV2PathToRoutes(route.path)
 
-          const exactInputParams = [amountIn, performAggregatedSlippageCheck ? 0 : amountOut, path, recipient]
+          const exactInputParams = [amountIn, performAggregatedSlippageCheck ? 0 : amountOut, routes, recipient]
 
           calldatas.push(SwapRouter.INTERFACE.encodeFunctionData('swapExactTokensForTokens', exactInputParams))
         }
@@ -292,7 +314,7 @@ export abstract class SwapRouter {
           inputToken = outputToken
 
           if (mixedRouteIsAllV3(newRoute)) {
-            const path: string = encodeMixedRouteToPath(newRoute)
+            const path: string = encodeV3RouteWithTickSpacing(newRoute as unknown as RouteV3<Currency, Currency>)
             const exactInputParams = {
               path,
               // By default router holds funds until the last swap, then it is sent to the recipient
@@ -305,10 +327,11 @@ export abstract class SwapRouter {
 
             calldatas.push(SwapRouter.INTERFACE.encodeFunctionData('exactInput', [exactInputParams]))
           } else {
+            const routes = encodeV2PathToRoutes(newRoute.path)
             const exactInputParams = [
               i === 0 ? amountIn : 0, // amountIn
               !isLastSectionInRoute(i) ? 0 : amountOut, // amountOutMin
-              newRoute.path.map((token) => token.address), // path
+              routes, // path
               isLastSectionInRoute(i) ? recipient : ADDRESS_THIS, // to
             ]
 

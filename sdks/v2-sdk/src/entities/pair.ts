@@ -1,9 +1,17 @@
-import { getCreate2Address } from '@ethersproject/address'
-import { BigNumber } from '@ethersproject/bignumber'
-import { keccak256, pack } from '@ethersproject/solidity'
-import { BigintIsh, CurrencyAmount, Percent, Price, sqrt, Token } from '@uniswap/sdk-core'
 import JSBI from 'jsbi'
 import invariant from 'tiny-invariant'
+
+import { getCreate2Address } from '@ethersproject/address'
+import { BigNumber } from '@ethersproject/bignumber'
+import { keccak256 } from '@ethersproject/solidity'
+import {
+  BigintIsh,
+  CurrencyAmount,
+  Percent,
+  Price,
+  sqrt,
+  Token,
+} from '@uniswap/sdk-core'
 
 import {
   _1000,
@@ -12,14 +20,17 @@ import {
   FACTORY_ADDRESS,
   FACTORY_ADDRESS_MAP,
   FIVE,
-  INIT_CODE_HASH,
+  initCodeHash,
   MINIMUM_LIQUIDITY,
   ONE,
   ONE_HUNDRED_PERCENT,
   ZERO,
   ZERO_PERCENT,
 } from '../constants'
-import { InsufficientInputAmountError, InsufficientReservesError } from '../errors'
+import {
+  InsufficientInputAmountError,
+  InsufficientReservesError,
+} from '../errors'
 
 export const computePairAddress = ({
   factoryAddress,
@@ -31,10 +42,11 @@ export const computePairAddress = ({
   tokenB: Token
 }): string => {
   const [token0, token1] = tokenA.sortsBefore(tokenB) ? [tokenA, tokenB] : [tokenB, tokenA] // does safety checks
+
   return getCreate2Address(
     factoryAddress,
-    keccak256(['bytes'], [pack(['address', 'address'], [token0.address, token1.address])]),
-    INIT_CODE_HASH
+    keccak256(['address', 'address', 'bool'], [token0.address.toLowerCase(), token1.address.toLowerCase(), false]),
+    initCodeHash(tokenA.chainId)
   )
 }
 export class Pair {

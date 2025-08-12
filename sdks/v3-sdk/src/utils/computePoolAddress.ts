@@ -1,8 +1,17 @@
 import { defaultAbiCoder } from '@ethersproject/abi'
 import { getCreate2Address } from '@ethersproject/address'
 import { keccak256 } from '@ethersproject/solidity'
-import { ChainId, computeZksyncCreate2Address, Token } from '@uniswap/sdk-core'
-import { FeeAmount, poolInitCodeHash } from '../constants'
+import {
+  ChainId,
+  computeZksyncCreate2Address,
+  Token,
+} from '@uniswap/sdk-core'
+
+import {
+  FeeAmount,
+  poolInitCodeHash,
+  TICK_SPACINGS,
+} from '../constants'
 
 /**
  * Computes a pool address
@@ -30,10 +39,28 @@ export function computePoolAddress({
   chainId?: ChainId
 }): string {
   const [token0, token1] = tokenA.sortsBefore(tokenB) ? [tokenA, tokenB] : [tokenB, tokenA] // does safety checks
-  const salt = keccak256(
-    ['bytes'],
-    [defaultAbiCoder.encode(['address', 'address', 'uint24'], [token0.address, token1.address, fee])]
-  )
+
+  let salt = ''
+  if (chainId === ChainId.MONAD_TESTNET) {
+    const tickSpacing = TICK_SPACINGS[fee]
+    // 修改 salt 计算方式以匹配合约
+    salt = keccak256(
+      ['bytes'],
+      [
+        defaultAbiCoder.encode(
+          ['address', 'address', 'int24'],
+          [token0.address.toLowerCase(), token1.address.toLowerCase(), tickSpacing]
+        ),
+      ]
+    )
+    factoryAddress = '0xCd07Ba03917c8806a0ecfc0783246288B62360b4'
+  } else {
+    salt = keccak256(
+      ['bytes'],
+      [defaultAbiCoder.encode(['address', 'address', 'uint24'], [token0.address, token1.address, fee])]
+    )
+  }
+
   const initCodeHash = initCodeHashManualOverride ?? poolInitCodeHash(chainId)
 
   // ZKSync uses a different create2 address computation
@@ -41,6 +68,8 @@ export function computePoolAddress({
   switch (chainId) {
     case ChainId.ZKSYNC:
       return computeZksyncCreate2Address(factoryAddress, initCodeHash, salt)
+    case ChainId.MONAD_TESTNET:
+      return getCreate2Address(factoryAddress, salt, initCodeHash)
     default:
       return getCreate2Address(factoryAddress, salt, initCodeHash)
   }

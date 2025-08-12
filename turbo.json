@@ -7,13 +7,16 @@
       ]
     },
     "build": {
+      "dependsOn": ["^build"],
       "inputs": [
         "yarn.lock",
         "**/package.json",
         "sdks/*/src/**.ts",
         "sdks/*/src/**.tsx"
       ],
-      "outputs": []
+      "outputs": [
+        "sdks/*/dist/**"
+      ]
     },
     "test": {
       "dependsOn": [

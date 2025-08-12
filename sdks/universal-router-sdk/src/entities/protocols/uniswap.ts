@@ -1,26 +1,56 @@
-import { RoutePlanner, CommandType } from '../../utils/routerCommands'
-import { Trade as V2Trade, Pair } from '@uniswap/v2-sdk'
-import { Trade as V3Trade, Pool, encodeRouteToPath } from '@uniswap/v3-sdk'
 import {
-  Trade as RouterTrade,
-  MixedRouteTrade,
-  Protocol,
+  BigNumber,
+  BigNumberish,
+  utils,
+} from 'ethers'
+
+import {
+  encodeMixedRouteToPath,
+  getOutputOfPools,
   IRoute,
+  MixedRoute,
+  MixedRouteSDK,
+  MixedRouteTrade,
+  partitionMixedRouteByProtocol,
+  Protocol,
   RouteV2,
   RouteV3,
-  MixedRouteSDK,
-  MixedRoute,
   SwapOptions as RouterSwapOptions,
-  getOutputOfPools,
-  encodeMixedRouteToPath,
-  partitionMixedRouteByProtocol,
+  Trade as RouterTrade,
 } from '@uniswap/router-sdk'
+import {
+  Currency,
+  CurrencyAmount,
+  Percent,
+  TradeType,
+} from '@uniswap/sdk-core'
+import {
+  Pair,
+  Trade as V2Trade,
+} from '@uniswap/v2-sdk'
+import {
+  encodeRouteToPath,
+  Pool,
+  Trade as V3Trade,
+} from '@uniswap/v3-sdk'
+
+import {
+  CONTRACT_BALANCE,
+  ETH_ADDRESS,
+  ROUTER_AS_RECIPIENT,
+  SENDER_AS_RECIPIENT,
+} from '../../utils/constants'
 import { Permit2Permit } from '../../utils/inputTokens'
-import { Currency, TradeType, CurrencyAmount, Percent } from '@uniswap/sdk-core'
-import { Command, RouterTradeType, TradeConfig } from '../Command'
-import { SENDER_AS_RECIPIENT, ROUTER_AS_RECIPIENT, CONTRACT_BALANCE, ETH_ADDRESS } from '../../utils/constants'
 import { encodeFeeBips } from '../../utils/numbers'
-import { BigNumber, BigNumberish } from 'ethers'
+import {
+  CommandType,
+  RoutePlanner,
+} from '../../utils/routerCommands'
+import {
+  Command,
+  RouterTradeType,
+  TradeConfig,
+} from '../Command'
 
 export type FlatFeeOptions = {
   amount: BigNumberish
@@ -166,6 +196,19 @@ export class UniswapTrade implements Command {
   }
 }
 
+function encodeV2Path<TInput extends Currency, TOutput extends Currency>(route: RouteV2<TInput, TOutput>): string {
+  const V2_ROUTE_PARAMS = '(address from, address to, bool stable)[]'
+  const path = []
+  for (let i = 0; i < route.path.length - 1; i++) {
+    path.push({
+      from: route.path[i].address,
+      to: route.path[i + 1].address,
+      stable: false,
+    })
+  }
+  return utils.defaultAbiCoder.encode([V2_ROUTE_PARAMS], [path])
+}
+
 // encode a uniswap v2 swap
 function addV2Swap<TInput extends Currency, TOutput extends Currency>(
   planner: RoutePlanner,
@@ -180,6 +223,7 @@ function addV2Swap<TInput extends Currency, TOutput extends Currency>(
     tradeType == TradeType.EXACT_INPUT ? inputAmount : outputAmount,
     tradeType
   )
+  const path = encodeV2Path(route as RouteV2<TInput, TOutput>)
 
   if (tradeType == TradeType.EXACT_INPUT) {
     planner.addCommand(CommandType.V2_SWAP_EXACT_IN, [
@@ -187,7 +231,7 @@ function addV2Swap<TInput extends Currency, TOutput extends Currency>(
       routerMustCustody ? ROUTER_AS_RECIPIENT : options.recipient,
       trade.maximumAmountIn(options.slippageTolerance).quotient.toString(),
       trade.minimumAmountOut(options.slippageTolerance).quotient.toString(),
-      route.path.map((pool) => pool.address),
+      path,
       payerIsUser,
     ])
   } else if (tradeType == TradeType.EXACT_OUTPUT) {
@@ -195,7 +239,7 @@ function addV2Swap<TInput extends Currency, TOutput extends Currency>(
       routerMustCustody ? ROUTER_AS_RECIPIENT : options.recipient,
       trade.minimumAmountOut(options.slippageTolerance).quotient.toString(),
       trade.maximumAmountIn(options.slippageTolerance).quotient.toString(),
-      route.path.map((pool) => pool.address),
+      path,
       payerIsUser,
     ])
   }
@@ -312,11 +356,12 @@ function addMixedSwap<TInput extends Currency, TOutput extends Currency>(
         payerIsUser && i === 0, // payerIsUser
       ])
     } else {
+      const path = encodeV2Path(newRoute as any as RouteV2<TInput, TOutput>)
       planner.addCommand(CommandType.V2_SWAP_EXACT_IN, [
         isLastSectionInRoute(i) ? tradeRecipient : ROUTER_AS_RECIPIENT, // recipient
         i === 0 ? amountIn : CONTRACT_BALANCE, // amountIn
         !isLastSectionInRoute(i) ? 0 : amountOut, // amountOutMin
-        newRoute.path.map((pool) => pool.address), // path
+        path, // path
         payerIsUser && i === 0,
       ])
     }

@@ -1,4 +1,8 @@
-import { ChainId, SUPPORTED_CHAINS, SupportedChainsType } from './chains'
+import {
+  ChainId,
+  SUPPORTED_CHAINS,
+  SupportedChainsType,
+} from './chains'
 
 type AddressMap = { [chainId: number]: string }
 
@@ -48,6 +52,7 @@ export const V2_FACTORY_ADDRESSES: AddressMap = {
   [ChainId.POLYGON]: '0x9e5A52f57b3038F1B8EeE45F28b3C1967e22799C',
   [ChainId.CELO]: '0x79a530c8e2fA8748B7B40dd3629C0520c2cCf03f',
   [ChainId.BLAST]: '0x5C346464d33F90bABaf70dB6388507CC889C1070',
+  [ChainId.MONAD_TESTNET]: '0xeFeCC86239D3Cb03430dF0D234CaDace9AdFDA95',
 }
 /**
  * @deprecated use V2_ROUTER_ADDRESSES instead
@@ -63,6 +68,7 @@ export const V2_ROUTER_ADDRESSES: AddressMap = {
   [ChainId.BNB]: '0x4752ba5dbc23f44d87826276bf6fd6b1c372ad24',
   [ChainId.POLYGON]: '0xedf6066a2b290c185783862c7f4776a2c8077ad1',
   [ChainId.BLAST]: '0xBB66Eb1c5e875933D44DAe661dbD80e5D9B03035',
+  [ChainId.MONAD_TESTNET]: '0xBb1c0A20D503BA2583A2ac57c2A09AB154175595',
 }
 
 // Networks that share most of the same addresses i.e. Mainnet, Goerli, Optimism, Arbitrum, Polygon
@@ -246,6 +252,17 @@ const ZKSYNC_ADDRESSES: ChainAddresses = {
   swapRouter02Address: '0x99c56385daBCE3E81d8499d0b8d0257aBC07E8A3',
 }
 
+const MONAD_TESTNET_ADDRESSES: ChainAddresses = {
+  v3CoreFactoryAddress: '0xbE82C0FE110f64BC31aaBd09D86c364E5aB5D132',
+  multicallAddress: '0x9249D1f46c871311EBb23fC2977040dC285F994f',
+  quoterAddress: '0x9Bb44228cD9D603B3e61c7f4acE040e0966EB0C0',
+  v3MigratorAddress: '0x611841b24E43C4ACfd290B427a3D6cf1A59dac8E',
+  nonfungiblePositionManagerAddress: '0xd9e0B07b7c935a2F0c46C33C81B7BDA352FBB306',
+  tickLensAddress: '0x1CA45FAa01A0CfBf55E5fF2Cd4c1Bd97112f6239',
+  swapRouter02Address: '0xdcb6F79d39EE1C43ac5753730b8e5d54168FcF31',
+  mixedRouteQuoterV1Address: '0x0583f3f9851D4f61184B826CD96Ffbd9aa9a9B2b',
+}
+
 export const CHAIN_TO_ADDRESSES_MAP: Record<SupportedChainsType, ChainAddresses> = {
   [ChainId.MAINNET]: MAINNET_ADDRESSES,
   [ChainId.OPTIMISM]: OPTIMISM_ADDRESSES,
@@ -269,6 +286,7 @@ export const CHAIN_TO_ADDRESSES_MAP: Record<SupportedChainsType, ChainAddresses>
   [ChainId.ROOTSTOCK]: ROOTSTOCK_ADDRESSES,
   [ChainId.BLAST]: BLAST_ADDRESSES,
   [ChainId.ZKSYNC]: ZKSYNC_ADDRESSES,
+  [ChainId.MONAD_TESTNET]: MONAD_TESTNET_ADDRESSES,
 }
 
 /* V3 Contract Addresses */
