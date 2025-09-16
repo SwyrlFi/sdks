@@ -2,7 +2,19 @@
   "$schema": "https://unpkg.com/@changesets/config@3.1.1/schema.json",
   "changelog": "@changesets/cli/changelog",
   "commit": false,
-  "fixed": [],
+  "fixed": [
+    [
+      "@swyrlfi/sdk-core",
+      "@swyrlfi/v2-sdk",
+      "@swyrlfi/v3-sdk",
+      "@swyrlfi/v4-sdk",
+      "@swyrlfi/permit2-sdk",
+      "@swyrlfi/router-sdk",
+      "@swyrlfi/universal-router-sdk",
+      "@swyrlfi/uniswapx-sdk",
+      "@swyrlfi/smart-wallet-sdk"
+    ]
+  ],
   "linked": [],
   "access": "public",
   "baseBranch": "main",
