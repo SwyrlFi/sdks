@@ -86,12 +86,12 @@
       [
         "@semantic-release/exec",
         {
-          "successCmd": "git restore yarn.lock && yarn",
-          "failCmd": "git restore yarn.lock && yarn",
+          "successCmd": "git restore yarn.lock && pnpm",
+          "failCmd": "git restore yarn.lock && pnpm",
           "execCwd": "../.."
         }
       ]
     ]
   },
-  "version": "1.0.0-alpha.3"
+  "version": "1.0.0-alpha.4"
 }

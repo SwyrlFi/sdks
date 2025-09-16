@@ -1,5 +1,11 @@
 # @swyrlfi/permit2-sdk
 
+## 1.0.0-alpha.4
+
+### Major Changes
+
+- test publish
+
 ## 1.0.0-alpha.3
 
 ### Major Changes

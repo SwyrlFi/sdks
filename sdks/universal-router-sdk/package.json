@@ -22,8 +22,8 @@
     "build": "tsdx build",
     "docs": "typedoc",
     "forge:fix": "forge fmt",
-    "lint": "yarn prettier",
-    "lint:fix": "yarn prettier:fix && yarn forge:fix",
+    "lint": "pnpm prettier",
+    "lint:fix": "pnpm prettier:fix && pnpm forge:fix",
     "prettier": "prettier --check '**/*.ts' && prettier --check '**/*.json'",
     "prettier:fix": "prettier --write '**/*.ts' && prettier --write '**/*.json'",
     "release": "semantic-release",
@@ -31,7 +31,7 @@
     "publish:beta": "npm version prerelease --preid=beta && npm publish --tag beta --access public",
     "publish:rc": "npm version prerelease --preid=rc && npm publish --tag rc --access public",
     "publish:release": "npm version patch && npm publish --access public",
-    "test": "yarn test:hardhat && yarn test:forge",
+    "test": "pnpm test:hardhat && pnpm test:forge",
     "test:forge": "forge test",
     "test:hardhat": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' hardhat test"
   },
@@ -97,8 +97,8 @@
       [
         "@semantic-release/exec",
         {
-          "successCmd": "git restore yarn.lock && yarn",
-          "failCmd": "git restore yarn.lock && yarn",
+          "successCmd": "git restore yarn.lock && pnpm",
+          "failCmd": "git restore yarn.lock && pnpm",
           "execCwd": "../.."
         }
       ]
@@ -108,5 +108,5 @@
     "hoistingLimits": "workspaces"
   },
   "sideEffects": false,
-  "version": "1.0.0-alpha.3"
+  "version": "1.0.0-alpha.4"
 }

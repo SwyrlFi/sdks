@@ -19,34 +19,31 @@
     "node": ">=10",
     "yarn": ">=3.2.3"
   },
-  "packageManager": "yarn@3.2.3",
+  "packageManager": "pnpm@8.15.1",
   "private": true,
   "scripts": {
-    "g:check:deps:mismatch": "manypkg check",
-    "g:build": "turbo run build",
-    "g:lint": "turbo run lint",
-    "g:release": "turbo run release --concurrency=1 --continue",
-    "g:test": "turbo run test",
-    "g:typecheck": "turbo run typecheck",
+    "g:check:deps:mismatch": "pnpm manypkg check",
+    "g:build": "pnpm turbo run build",
+    "g:lint": "pnpm turbo run lint",
+    "g:release": "pnpm turbo run release --concurrency=1 --continue",
+    "g:test": "pnpm turbo run test",
+    "g:typecheck": "pnpm turbo run typecheck",
     "changeset": "changeset",
     "changeset:version": "changeset version",
-    "changeset:publish": "yarn g:build && changeset publish",
-    "changeset:publish:alpha": "yarn g:build && changeset publish --tag alpha",
-    "changeset:publish:beta": "yarn g:build && changeset publish --tag beta",
+    "changeset:publish": "pnpm g:build && changeset publish",
+    "changeset:publish:alpha": "pnpm g:build && changeset publish --tag alpha",
+    "changeset:publish:beta": "pnpm g:build && changeset publish --tag beta",
     "changeset:pre:enter:alpha": "changeset pre enter alpha",
     "changeset:pre:enter:beta": "changeset pre enter beta",
     "changeset:pre:exit": "changeset pre exit",
     "publish:interactive": "node scripts/release.js",
-    "sdk": "yarn workspace",
+    "sdk": "pnpm --filter",
     "postinstall": "husky"
   },
   "workspaces": [
     "sdks/*",
     "sdks/uniswapx-sdk/integration"
   ],
-  "resolutions": {
-    "@manypkg/cli@^0.19.2": "patch:@manypkg/cli@npm%3A0.19.2#./.yarn/patches/@manypkg-cli-npm-0.19.2-ea52ff91d4.patch"
-  },
   "devDependencies": {
     "@changesets/cli": "2.29.7",
     "@types/bs58": "5.0.0",

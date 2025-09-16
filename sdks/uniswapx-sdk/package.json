@@ -20,7 +20,7 @@
     "node": ">=10"
   },
   "scripts": {
-    "build": "yarn run typechain && yarn build:cjs && yarn build:esm && yarn build:types",
+    "build": "pnpm run typechain && pnpm build:cjs && pnpm build:esm && pnpm build:types",
     "build:cjs": "tsc -p tsconfig.cjs.json",
     "build:esm": "tsc -p tsconfig.esm.json",
     "build:types": "tsc -p tsconfig.types.json",
@@ -34,7 +34,7 @@
     "publish:release": "npm version patch && npm publish --access public",
     "test": "run-s test:unit test:integration",
     "test:unit": "jest --testPathPattern src --detectOpenHandles --forceExit --testPathIgnorePatterns dist",
-    "test:integration": "cd integration && yarn && yarn test",
+    "test:integration": "cd integration && pnpm && pnpm test",
     "typechain": "typechain --target=ethers-v5 --out-dir src/contracts --glob ./abis/**/*.json"
   },
   "dependencies": {
@@ -67,7 +67,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn fix"
+      "pre-commit": "pnpm fix"
     }
   },
   "publishConfig": {
@@ -100,8 +100,8 @@
       [
         "@semantic-release/exec",
         {
-          "successCmd": "git restore yarn.lock && yarn",
-          "failCmd": "git restore yarn.lock && yarn",
+          "successCmd": "git restore yarn.lock && pnpm",
+          "failCmd": "git restore yarn.lock && pnpm",
           "execCwd": "../.."
         }
       ]
@@ -115,5 +115,5 @@
     }
   },
   "sideEffects": false,
-  "version": "1.0.0-alpha.3"
+  "version": "1.0.0-alpha.4"
 }

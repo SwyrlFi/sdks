@@ -30,25 +30,40 @@ jobs:
       - name: 💽 Node and Caching
         uses: actions/setup-node@1a4442cacd436585916779262731d5b162bc6ec7
         with:
-          cache: yarn
           node-version: 18
 
-      - name: 📥 yarn install
+      - name: 📥 Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          run_install: false
+
+      - name: 📦 Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: 🗃️ Setup pnpm cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: 📥 pnpm install
         shell: bash
         working-directory: ./
         run: |
-          yarn --immutable
+          pnpm install --frozen-lockfile
         env:
-          # CI optimizations. Overrides yarnrc.yml options (or their defaults) in the CI action.
-          YARN_ENABLE_GLOBAL_CACHE: "false" # Use local cache folder to keep downloaded archives
-          YARN_NM_MODE: "hardlinks-local" # Hardlinks-local reduces io / node_modules size
           HUSKY: "0" # By default do not run HUSKY install
 
       - name: 🔬 Lint
-        run: yarn g:lint
+        run: pnpm g:lint
 
       - name: 🏗  Build
-        run: yarn g:build
+        run: pnpm g:build
 
       - name: 🪨 Install Foundry
         uses: foundry-rs/foundry-toolchain@v1
@@ -64,4 +79,4 @@ jobs:
           timeout_minutes: 20
           retry_wait_seconds: 2
           max_attempts: 3
-          command: yarn g:test
+          command: pnpm g:test

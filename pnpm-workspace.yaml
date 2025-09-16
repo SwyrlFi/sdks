@@ -1,0 +1,3 @@
+packages:
+  - 'sdks/*'
+  # - 'sdks/uniswapx-sdk/integration'
