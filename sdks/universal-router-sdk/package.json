@@ -1,7 +1,10 @@
 {
   "name": "@swyrlfi/universal-router-sdk",
   "description": "sdk for integrating with the Universal Router contracts",
-  "repository": "https://github.com/Uniswap/sdks.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Uniswap/sdks.git"
+  },
   "keywords": [
     "uniswap",
     "ethereum"
@@ -70,7 +73,7 @@
   },
   "publishConfig": {
     "access": "public",
-    "provenance": true
+    "provenance": false
   },
   "release": {
     "extends": "semantic-release-monorepo",

@@ -1,7 +1,10 @@
 {
   "name": "@swyrlfi/permit2-sdk",
   "description": "An sdk for interacting with permit2.",
-  "repository": "https://github.com/Uniswap/sdks.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Uniswap/sdks.git"
+  },
   "keywords": [
     "uniswap",
     "ethereum"
@@ -53,7 +56,7 @@
   },
   "publishConfig": {
     "access": "public",
-    "provenance": true
+    "provenance": false
   },
   "release": {
     "extends": "semantic-release-monorepo",

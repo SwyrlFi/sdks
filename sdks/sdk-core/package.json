@@ -1,7 +1,10 @@
 {
   "name": "@swyrlfi/sdk-core",
   "description": "⚒️ An SDK for building applications on top of Uniswap V3",
-  "repository": "https://github.com/Uniswap/sdks.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Uniswap/sdks.git"
+  },
   "keywords": [
     "uniswap",
     "ethereum"
@@ -56,7 +59,7 @@
   },
   "publishConfig": {
     "access": "public",
-    "provenance": true
+    "provenance": false
   },
   "release": {
     "extends": "semantic-release-monorepo",

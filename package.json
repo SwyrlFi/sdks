@@ -51,5 +51,9 @@
     "@changesets/cli": "2.29.7",
     "@types/bs58": "5.0.0",
     "bs58": "6.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Uniswap/sdks.git"
   }
 }
