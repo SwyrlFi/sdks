@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, Price, TradeType } from "@uniswap/sdk-core";
+import { Currency, CurrencyAmount, Price, TradeType } from "@swyrlfi/sdk-core";
 
 import { UnsignedPriorityOrder, UnsignedPriorityOrderInfo } from "../order";
 

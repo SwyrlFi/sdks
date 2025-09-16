@@ -7,7 +7,7 @@ Pull requests welcome!
 
 # Uniswap V3 SDK
 
-[![npm version](https://img.shields.io/npm/v/@uniswap/v3-sdk/latest.svg)](https://www.npmjs.com/package/@uniswap/v3-sdk/v/latest)
-[![npm bundle size (scoped version)](https://img.shields.io/bundlephobia/minzip/@uniswap/v3-sdk/latest.svg)](https://bundlephobia.com/result?p=@uniswap/v3-sdk@latest)
+[![npm version](https://img.shields.io/npm/v/@swyrlfi/v3-sdk/latest.svg)](https://www.npmjs.com/package/@swyrlfi/v3-sdk/v/latest)
+[![npm bundle size (scoped version)](https://img.shields.io/bundlephobia/minzip/@swyrlfi/v3-sdk/latest.svg)](https://bundlephobia.com/result?p=@swyrlfi/v3-sdk@latest)
 
 In-depth documentation on this SDK is available at [uniswap.org](https://docs.uniswap.org/).

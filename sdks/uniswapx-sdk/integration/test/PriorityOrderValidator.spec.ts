@@ -23,7 +23,7 @@ import {
 import { StaticJsonRpcProvider } from "@ethersproject/providers";
 import { REACTOR_ADDRESS_MAPPING, UNISWAPX_ORDER_QUOTER_MAPPING } from "../../src/constants";
 import { parseEther } from "ethers/lib/utils";
-import { PERMIT2_ADDRESS } from "@uniswap/permit2-sdk";
+import { PERMIT2_ADDRESS } from "@swyrlfi/permit2-sdk";
 
 if(!process.env.FORK_URL_8453) {
   throw new Error("FORK_URL_8453 not defined in environment");

@@ -7,13 +7,13 @@ This SDK provides utilities for interacting with Uniswap protocols using smart w
 ## Installation
 
 ```bash
-npm install @uniswap/smart-wallet-sdk
+npm install @swyrlfi/smart-wallet-sdk
 ```
 
 or
 
 ```bash
-yarn add @uniswap/smart-wallet-sdk
+yarn add @swyrlfi/smart-wallet-sdk
 ```
 
 ## Deployment Addresses

@@ -9,7 +9,7 @@ The SDK contains bindings for two main flows: parsing serialized orders & buildi
 ### Building & Signing Orders
 
 ```ts
-import { DutchOrder, NonceManager } from '@uniswap/uniswapx-sdk';
+import { DutchOrder, NonceManager } from '@swyrlfi/uniswapx-sdk';
 import { ethers } from 'ethers';
 
 const provider = new ethers.providers.JsonRpcProvider(RPC_URL);
@@ -46,7 +46,7 @@ const serializedOrder = order.serialize();
 
 ### Parsing Orders
 ```ts
-import { DutchOrder, Order } from '@uniswap/uniswapx-sdk';
+import { DutchOrder, Order } from '@swyrlfi/uniswapx-sdk';
 
 const serializedOrder = '0x1111222233334444555500000000234300234...';
 const chainId = 1; 

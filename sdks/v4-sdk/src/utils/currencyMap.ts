@@ -1,4 +1,4 @@
-import { Currency } from '@uniswap/sdk-core'
+import { Currency } from '@swyrlfi/sdk-core'
 import { ADDRESS_ZERO } from '../internalConstants'
 
 // Uniswap v4 supports native pools. Those currencies are represented by the zero address.

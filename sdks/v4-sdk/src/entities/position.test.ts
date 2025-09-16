@@ -1,10 +1,10 @@
-import { Token } from '@uniswap/sdk-core'
+import { Token } from '@swyrlfi/sdk-core'
 import { Pool } from './pool'
 import { Position } from './position'
 import { TICK_SPACING_TEN, ADDRESS_ZERO } from '../internalConstants'
-import { Percent } from '@uniswap/sdk-core'
-import { maxLiquidityForAmounts, nearestUsableTick, TickMath } from '@uniswap/v3-sdk'
-import { encodeSqrtRatioX96 } from '@uniswap/v3-sdk'
+import { Percent } from '@swyrlfi/sdk-core'
+import { maxLiquidityForAmounts, nearestUsableTick, TickMath } from '@swyrlfi/v3-sdk'
+import { encodeSqrtRatioX96 } from '@swyrlfi/v3-sdk'
 
 describe('Position', () => {
   const USDC = new Token(1, '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48', 6, 'USDC', 'USD Coin')

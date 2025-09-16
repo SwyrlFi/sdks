@@ -1,5 +1,5 @@
-import { Ether, Token, WETH9 } from '@uniswap/sdk-core'
-import { encodeSqrtRatioX96 } from '@uniswap/v3-sdk'
+import { Ether, Token, WETH9 } from '@swyrlfi/sdk-core'
+import { encodeSqrtRatioX96 } from '@swyrlfi/v3-sdk'
 import { Route } from '../entities/route'
 import { Pool } from '../entities/pool'
 import { encodeRouteToPath } from './encodeRouteToPath'

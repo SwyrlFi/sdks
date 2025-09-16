@@ -1,5 +1,5 @@
 import { ethers, Wallet } from 'ethers'
-import { AllowanceTransfer, PermitSingle } from '@uniswap/permit2-sdk'
+import { AllowanceTransfer, PermitSingle } from '@swyrlfi/permit2-sdk'
 import { Permit2Permit } from '../../src/utils/inputTokens'
 import { PERMIT2_ADDRESS } from './addresses'
 import { MAX_UINT160, UNIVERSAL_ROUTER_ADDRESS, UniversalRouterVersion } from '../../src/utils/constants'

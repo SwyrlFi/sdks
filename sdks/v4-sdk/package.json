@@ -1,5 +1,5 @@
 {
-  "name": "@uniswap/v4-sdk",
+  "name": "@swyrlfi/v4-sdk",
   "description": "⚒️ An SDK for building applications on top of Uniswap V4",
   "repository": "https://github.com/Uniswap/sdks.git",
   "keywords": [
@@ -20,14 +20,18 @@
     "build": "tsdx build",
     "lint": "tsdx lint src",
     "release": "semantic-release",
+    "publish:alpha": "npm version prerelease --preid=alpha && npm publish --tag alpha --access public",
+    "publish:beta": "npm version prerelease --preid=beta && npm publish --tag beta --access public",
+    "publish:rc": "npm version prerelease --preid=rc && npm publish --tag rc --access public",
+    "publish:release": "npm version patch && npm publish --access public",
     "start": "tsdx watch",
     "test": "tsdx test"
   },
   "sideEffects": false,
   "dependencies": {
     "@ethersproject/solidity": "^5.0.9",
-    "@uniswap/sdk-core": "^7.7.1",
-    "@uniswap/v3-sdk": "3.25.2",
+    "@swyrlfi/sdk-core": "workspace:*",
+    "@swyrlfi/v3-sdk": "workspace:*",
     "tiny-invariant": "^1.1.0",
     "tiny-warning": "^1.0.3"
   },
@@ -94,5 +98,6 @@
         }
       ]
     ]
-  }
+  },
+  "version": "0.0.1-alpha.0"
 }

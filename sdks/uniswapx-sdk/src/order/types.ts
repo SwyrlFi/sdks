@@ -2,7 +2,7 @@ import { SignatureLike } from "@ethersproject/bytes";
 import {
   PermitBatchTransferFromData,
   PermitTransferFromData,
-} from "@uniswap/permit2-sdk";
+} from "@swyrlfi/permit2-sdk";
 import { BigNumber } from "ethers";
 
 export type BlockOverrides = { number?: string } | undefined;

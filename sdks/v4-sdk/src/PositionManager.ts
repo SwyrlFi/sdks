@@ -1,4 +1,4 @@
-import { BigintIsh, Percent, validateAndParseAddress, NativeCurrency } from '@uniswap/sdk-core'
+import { BigintIsh, Percent, validateAndParseAddress, NativeCurrency } from '@swyrlfi/sdk-core'
 import { TypedDataDomain, TypedDataField } from '@ethersproject/abstract-signer'
 import JSBI from 'jsbi'
 import { Position } from './entities/position'

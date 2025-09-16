@@ -1,5 +1,5 @@
-import { Ether, Token, WETH9 } from '@uniswap/sdk-core'
-import { encodeSqrtRatioX96, TickMath } from '@uniswap/v3-sdk'
+import { Ether, Token, WETH9 } from '@swyrlfi/sdk-core'
+import { encodeSqrtRatioX96, TickMath } from '@swyrlfi/v3-sdk'
 import { Pool } from './pool'
 import { Route } from './route'
 import { ADDRESS_ZERO, FEE_AMOUNT_MEDIUM, TICK_SPACING_TEN } from '../internalConstants'

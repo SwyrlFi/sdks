@@ -1,4 +1,4 @@
-import { Ether, Percent, Token } from '@uniswap/sdk-core'
+import { Ether, Percent, Token } from '@swyrlfi/sdk-core'
 import { ethers } from 'ethers'
 import {
   EMPTY_BYTES,

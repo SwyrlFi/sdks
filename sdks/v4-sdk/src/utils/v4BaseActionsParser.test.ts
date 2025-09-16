@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { WETH9 } from '@uniswap/sdk-core'
+import { WETH9 } from '@swyrlfi/sdk-core'
 import { ethers } from 'ethers'
 import { Route } from '../entities/route'
 import { encodeRouteToPath } from './encodeRouteToPath'

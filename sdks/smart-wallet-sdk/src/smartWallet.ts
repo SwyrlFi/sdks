@@ -1,4 +1,4 @@
-import { ChainId } from '@uniswap/sdk-core'
+import { ChainId } from '@swyrlfi/sdk-core'
 import { encodeFunctionData } from 'viem'
 
 import abi from '../abis/MinimalDelegationEntry.json'

@@ -1,5 +1,5 @@
 {
-  "name": "@uniswap/sdk-core",
+  "name": "@swyrlfi/sdk-core",
   "description": "⚒️ An SDK for building applications on top of Uniswap V3",
   "repository": "https://github.com/Uniswap/sdks.git",
   "keywords": [
@@ -20,6 +20,10 @@
     "build": "tsdx build",
     "lint": "tsdx lint src",
     "release": "semantic-release",
+    "publish:alpha": "npm version prerelease --preid=alpha && npm publish --tag alpha --access public",
+    "publish:beta": "npm version prerelease --preid=beta && npm publish --tag beta --access public",
+    "publish:rc": "npm version prerelease --preid=rc && npm publish --tag rc --access public",
+    "publish:release": "npm version patch && npm publish --access public",
     "start": "tsdx watch",
     "test": "tsdx test"
   },
@@ -82,5 +86,6 @@
         }
       ]
     ]
-  }
+  },
+  "version": "0.0.1-alpha.1"
 }

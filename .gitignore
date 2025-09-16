@@ -3,6 +3,9 @@
 .yarn/versions
 .yarn/install-state.gz
 
+*/node_modules
+*/dist
+
 # Turbo
 .turbo
 

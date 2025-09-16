@@ -1,7 +1,7 @@
-import { Token, CurrencyAmount, WETH9, Ether, ChainId } from '@uniswap/sdk-core'
+import { Token, CurrencyAmount, WETH9, Ether, ChainId } from '@swyrlfi/sdk-core'
 import { Pool, DYNAMIC_FEE_FLAG } from './pool'
 import JSBI from 'jsbi'
-import { nearestUsableTick, encodeSqrtRatioX96, TickMath } from '@uniswap/v3-sdk'
+import { nearestUsableTick, encodeSqrtRatioX96, TickMath } from '@swyrlfi/v3-sdk'
 import {
   ADDRESS_ZERO,
   FEE_AMOUNT_LOW,

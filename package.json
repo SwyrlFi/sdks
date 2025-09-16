@@ -28,6 +28,15 @@
     "g:release": "turbo run release --concurrency=1 --continue",
     "g:test": "turbo run test",
     "g:typecheck": "turbo run typecheck",
+    "changeset": "changeset",
+    "changeset:version": "changeset version",
+    "changeset:publish": "yarn g:build && changeset publish",
+    "changeset:publish:alpha": "yarn g:build && changeset publish --tag alpha",
+    "changeset:publish:beta": "yarn g:build && changeset publish --tag beta",
+    "changeset:pre:enter:alpha": "changeset pre enter alpha",
+    "changeset:pre:enter:beta": "changeset pre enter beta",
+    "changeset:pre:exit": "changeset pre exit",
+    "publish:interactive": "node scripts/release.js",
     "sdk": "yarn workspace",
     "postinstall": "husky"
   },
@@ -37,5 +46,10 @@
   ],
   "resolutions": {
     "@manypkg/cli@^0.19.2": "patch:@manypkg/cli@npm%3A0.19.2#./.yarn/patches/@manypkg-cli-npm-0.19.2-ea52ff91d4.patch"
+  },
+  "devDependencies": {
+    "@changesets/cli": "2.29.7",
+    "@types/bs58": "5.0.0",
+    "bs58": "6.0.0"
   }
 }

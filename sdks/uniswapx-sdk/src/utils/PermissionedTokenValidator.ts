@@ -1,5 +1,5 @@
 import { Provider } from "@ethersproject/providers";
-import { ChainId } from "@uniswap/sdk-core";
+import { ChainId } from "@swyrlfi/sdk-core";
 
 import { PERMISSIONED_TOKENS, PermissionedTokenInterface } from "../constants";
 import { PermissionedTokenProxyType } from "../constants";

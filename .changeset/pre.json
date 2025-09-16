@@ -1,0 +1,17 @@
+{
+  "mode": "pre",
+  "tag": "alpha",
+  "initialVersions": {
+    "@swyrlfi/permit2-sdk": "0.0.1-alpha.1",
+    "@swyrlfi/router-sdk": "0.0.1-alpha.0",
+    "@swyrlfi/sdk-core": "0.0.1-alpha.1",
+    "@swyrlfi/smart-wallet-sdk": "0.0.1-alpha.0",
+    "@swyrlfi/uniswapx-sdk": "0.0.1-alpha.0",
+    "uniswapx-integration": "0.1.0",
+    "@swyrlfi/universal-router-sdk": "0.0.1-alpha.0",
+    "@swyrlfi/v2-sdk": "0.0.1-alpha.1",
+    "@swyrlfi/v3-sdk": "0.0.1-alpha.0",
+    "@swyrlfi/v4-sdk": "0.0.1-alpha.0"
+  },
+  "changesets": []
+}

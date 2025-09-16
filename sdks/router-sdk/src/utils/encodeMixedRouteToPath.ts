@@ -1,8 +1,8 @@
 import { pack } from '@ethersproject/solidity'
-import { Currency } from '@uniswap/sdk-core'
-import { Pair } from '@uniswap/v2-sdk'
-import { Pool as V3Pool } from '@uniswap/v3-sdk'
-import { Pool as V4Pool } from '@uniswap/v4-sdk'
+import { Currency } from '@swyrlfi/sdk-core'
+import { Pair } from '@swyrlfi/v2-sdk'
+import { Pool as V3Pool } from '@swyrlfi/v3-sdk'
+import { Pool as V4Pool } from '@swyrlfi/v4-sdk'
 import {
   ADDRESS_ZERO,
   MIXED_QUOTER_V2_V2_FEE_PATH_PLACEHOLDER,

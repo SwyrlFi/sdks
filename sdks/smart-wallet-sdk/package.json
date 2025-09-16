@@ -1,5 +1,5 @@
 {
-  "name": "@uniswap/smart-wallet-sdk",
+  "name": "@swyrlfi/smart-wallet-sdk",
   "description": "⚒️ An SDK for building applications with smart wallets on Uniswap",
   "repository": "https://github.com/Uniswap/sdks.git",
   "keywords": [
@@ -24,6 +24,10 @@
     "build:esm": "tsc -p tsconfig.esm.json",
     "build:types": "tsc -p tsconfig.types.json",
     "release": "semantic-release",
+    "publish:alpha": "npm version prerelease --preid=alpha && npm publish --tag alpha --access public",
+    "publish:beta": "npm version prerelease --preid=beta && npm publish --tag beta --access public",
+    "publish:rc": "npm version prerelease --preid=rc && npm publish --tag rc --access public",
+    "publish:release": "npm version patch && npm publish --access public",
     "lint": "eslint src --ext .ts",
     "test": "jest"
   },
@@ -36,7 +40,7 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@uniswap/sdk-core": "^7.6.0",
+    "@swyrlfi/sdk-core": "workspace:*",
     "viem": "^2.23.5"
   },
   "devDependencies": {
@@ -91,5 +95,6 @@
         }
       ]
     ]
-  }
+  },
+  "version": "0.0.1-alpha.0"
 }

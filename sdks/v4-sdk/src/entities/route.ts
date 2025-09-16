@@ -1,6 +1,6 @@
 import invariant from 'tiny-invariant'
 
-import { Currency, Price } from '@uniswap/sdk-core'
+import { Currency, Price } from '@swyrlfi/sdk-core'
 import { Pool } from './pool'
 import { getPathCurrency } from '../utils/pathCurrency'
 
