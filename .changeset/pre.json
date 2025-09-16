@@ -2,19 +2,20 @@
   "mode": "pre",
   "tag": "alpha",
   "initialVersions": {
-    "@swyrlfi/permit2-sdk": "0.0.1-alpha.1",
-    "@swyrlfi/router-sdk": "0.0.1-alpha.0",
-    "@swyrlfi/sdk-core": "0.0.1-alpha.1",
-    "@swyrlfi/smart-wallet-sdk": "0.0.1-alpha.0",
-    "@swyrlfi/uniswapx-sdk": "0.0.1-alpha.0",
+    "@swyrlfi/permit2-sdk": "1.0.0-alpha.2",
+    "@swyrlfi/router-sdk": "1.0.0-alpha.2",
+    "@swyrlfi/sdk-core": "1.0.0-alpha.2",
+    "@swyrlfi/smart-wallet-sdk": "1.0.0-alpha.2",
+    "@swyrlfi/uniswapx-sdk": "1.0.0-alpha.2",
     "uniswapx-integration": "0.1.0",
-    "@swyrlfi/universal-router-sdk": "0.0.1-alpha.0",
-    "@swyrlfi/v2-sdk": "0.0.1-alpha.1",
-    "@swyrlfi/v3-sdk": "0.0.1-alpha.0",
-    "@swyrlfi/v4-sdk": "0.0.1-alpha.0"
+    "@swyrlfi/universal-router-sdk": "1.0.0-alpha.2",
+    "@swyrlfi/v2-sdk": "1.0.0-alpha.2",
+    "@swyrlfi/v3-sdk": "1.0.0-alpha.2",
+    "@swyrlfi/v4-sdk": "1.0.0-alpha.2"
   },
   "changesets": [
     "tasty-onions-give",
+    "tricky-towns-smash",
     "unify-versions"
   ]
 }
