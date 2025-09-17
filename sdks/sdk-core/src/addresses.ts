@@ -52,7 +52,9 @@ export const V2_FACTORY_ADDRESSES: AddressMap = {
   [ChainId.POLYGON]: '0x9e5A52f57b3038F1B8EeE45F28b3C1967e22799C',
   [ChainId.CELO]: '0x79a530c8e2fA8748B7B40dd3629C0520c2cCf03f',
   [ChainId.BLAST]: '0x5C346464d33F90bABaf70dB6388507CC889C1070',
-  [ChainId.MONAD_TESTNET]: '0xeFeCC86239D3Cb03430dF0D234CaDace9AdFDA95',
+  [ChainId.MONAD_TESTNET]: '0x42fF5785e7bB0120B9a0Ff1E1937e9FEa85Fa9a2',
+  [ChainId.MONAD_DEVNET]: '0x6Cfe3Ff55cCcC20627ED9a9b4E7A74B364ce56B8', // PAIR_FACTORY
+  // [ChainId.MONAD_MAINNET]: '', // To be configured
 }
 /**
  * @deprecated use V2_ROUTER_ADDRESSES instead
@@ -69,6 +71,8 @@ export const V2_ROUTER_ADDRESSES: AddressMap = {
   [ChainId.POLYGON]: '0xedf6066a2b290c185783862c7f4776a2c8077ad1',
   [ChainId.BLAST]: '0xBB66Eb1c5e875933D44DAe661dbD80e5D9B03035',
   [ChainId.MONAD_TESTNET]: '0xBb1c0A20D503BA2583A2ac57c2A09AB154175595',
+  [ChainId.MONAD_DEVNET]: '0x5020e3A65a30ce1B5f1420D70868324c7E7DdA00', // ROUTER
+  // [ChainId.MONAD_MAINNET]: '', // To be configured
 }
 
 // Networks that share most of the same addresses i.e. Mainnet, Goerli, Optimism, Arbitrum, Polygon
@@ -263,6 +267,29 @@ const MONAD_TESTNET_ADDRESSES: ChainAddresses = {
   mixedRouteQuoterV1Address: '0x0583f3f9851D4f61184B826CD96Ffbd9aa9a9B2b',
 }
 
+const MONAD_DEVNET_ADDRESSES: ChainAddresses = {
+  v3CoreFactoryAddress: '0x8b8D30C67187Fd02dCBEa05B35BFC22e89a1d894', // SWYRL_V3_FACTORY
+  multicallAddress: '0x72B0887F260Fd4F2B8d70f1b1BF317b436CdD4A7', // UNISWAP_INTERFACE_MULTICALL
+  quoterAddress: '0x0FBFfB24B3012048dFA2475695692D87bd133EAf', // QUOTER_V2
+  v3MigratorAddress: undefined, // Not deployed for MONAD_DEVNET
+  nonfungiblePositionManagerAddress: '0xe9e39fDa19FA4cD3B0c6d4835283EeD9a8686709', // NONFUNGIBLE_POSITION_MANAGER
+  tickLensAddress: '0x4C981C87b341b1D703E64D0cba13485406e4D4C8', // TICK_LENS
+  swapRouter02Address: '0xf06748f02D1F8dff2378f96813F7a834f83DE3CB', // SWAP_ROUTER_02
+  mixedRouteQuoterV1Address: '0x9051eF4A044Be0Aa6493489a2D6E635A5B5Fa19b' // MIXED_ROUTE_QUOTER_V1
+}
+
+// Placeholder for MONAD_MAINNET - to be configured when chain is launched
+// const MONAD_MAINNET_ADDRESSES: ChainAddresses = {
+//   v3CoreFactoryAddress: '',
+//   multicallAddress: '',
+//   quoterAddress: '',
+//   v3MigratorAddress: '',
+//   nonfungiblePositionManagerAddress: '',
+//   tickLensAddress: '',
+//   swapRouter02Address: '',
+//   mixedRouteQuoterV1Address: '',
+// }
+
 export const CHAIN_TO_ADDRESSES_MAP: Record<SupportedChainsType, ChainAddresses> = {
   [ChainId.MAINNET]: MAINNET_ADDRESSES,
   [ChainId.OPTIMISM]: OPTIMISM_ADDRESSES,
@@ -287,6 +314,8 @@ export const CHAIN_TO_ADDRESSES_MAP: Record<SupportedChainsType, ChainAddresses>
   [ChainId.BLAST]: BLAST_ADDRESSES,
   [ChainId.ZKSYNC]: ZKSYNC_ADDRESSES,
   [ChainId.MONAD_TESTNET]: MONAD_TESTNET_ADDRESSES,
+  [ChainId.MONAD_DEVNET]: MONAD_DEVNET_ADDRESSES,
+  // [ChainId.MONAD_MAINNET]: MONAD_MAINNET_ADDRESSES, // Add when chain is configured
 }
 
 /* V3 Contract Addresses */

@@ -13,6 +13,8 @@ export function poolInitCodeHash(chainId?: ChainId): string {
       return '0x010013f177ea1fcbc4520f9a3ca7cd2d1d77959e05aa66484027cb38e712aeed'
     case ChainId.MONAD_TESTNET:
       return '0x96fa0c0344e6345992578dc7aa796e013cc8936d915bdab22970e6589186d66e'
+    case ChainId.MONAD_DEVNET:
+      return '0x70a18ff6c63876fee3f6b5f9a1dc47efa7d132e4999d8fe062a8b81afd369954'
     default:
       return POOL_INIT_CODE_HASH
   }

@@ -41,7 +41,7 @@ export function computePoolAddress({
   const [token0, token1] = tokenA.sortsBefore(tokenB) ? [tokenA, tokenB] : [tokenB, tokenA] // does safety checks
 
   let salt = ''
-  if (chainId === ChainId.MONAD_TESTNET) {
+  if (chainId === ChainId.MONAD_TESTNET || chainId === ChainId.MONAD_DEVNET) {
     const tickSpacing = TICK_SPACINGS[fee]
     // 修改 salt 计算方式以匹配合约
     salt = keccak256(
@@ -53,7 +53,11 @@ export function computePoolAddress({
         ),
       ]
     )
-    factoryAddress = '0xCd07Ba03917c8806a0ecfc0783246288B62360b4'
+    if (chainId === ChainId.MONAD_TESTNET) {
+      factoryAddress = '0xCd07Ba03917c8806a0ecfc0783246288B62360b4'
+    } else if (chainId === ChainId.MONAD_DEVNET) {
+      factoryAddress = '0xF3A43f6416321715772341081CcF63921be431fc' // MONAD_DEVNET_V3_POOL_DEPLOYER_ADDRESS
+    }
   } else {
     salt = keccak256(
       ['bytes'],
@@ -69,6 +73,7 @@ export function computePoolAddress({
     case ChainId.ZKSYNC:
       return computeZksyncCreate2Address(factoryAddress, initCodeHash, salt)
     case ChainId.MONAD_TESTNET:
+    case ChainId.MONAD_DEVNET:
       return getCreate2Address(factoryAddress, salt, initCodeHash)
     default:
       return getCreate2Address(factoryAddress, salt, initCodeHash)
