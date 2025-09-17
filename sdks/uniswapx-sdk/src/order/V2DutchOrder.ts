@@ -4,7 +4,7 @@ import {
   PermitTransferFromData,
   SignatureTransfer,
   Witness,
-} from "@uniswap/permit2-sdk";
+} from "@swyrlfi/permit2-sdk";
 import { BigNumber, ethers } from "ethers";
 
 import { getPermit2 } from "../utils";

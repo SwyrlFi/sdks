@@ -5,7 +5,7 @@ import {
   ChainId,
   computeZksyncCreate2Address,
   Token,
-} from '@uniswap/sdk-core'
+} from '@swyrlfi/sdk-core'
 
 import {
   FeeAmount,

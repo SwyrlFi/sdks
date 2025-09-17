@@ -1,5 +1,6 @@
 {
-  "name": "@uniswap/sdk-core",
+  "name": "@swyrlfi/sdk-core",
+  "version": "1.0.0-alpha.5",
   "description": "⚒️ An SDK for building applications on top of Uniswap V3",
   "repository": "https://github.com/Uniswap/sdks.git",
   "keywords": [
@@ -19,7 +20,6 @@
   "scripts": {
     "build": "tsdx build",
     "lint": "tsdx lint src",
-    "release": "semantic-release",
     "start": "tsdx watch",
     "test": "tsdx test"
   },
@@ -46,34 +46,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "release": {
-    "extends": "semantic-release-monorepo",
-    "branches": [
-      {
-        "name": "main",
-        "prerelease": false
-      }
-    ],
-    "plugins": [
-      [
-        "@semantic-release/commit-analyzer",
-        {
-          "preset": "angular",
-          "releaseRules": "../../publishing/release-rules.cjs"
-        }
-      ],
-      "@semantic-release/release-notes-generator",
-      "@semantic-release/npm",
-      "@semantic-release/github",
-      [
-        "@semantic-release/exec",
-        {
-          "successCmd": "git restore yarn.lock && yarn",
-          "failCmd": "git restore yarn.lock && yarn",
-          "execCwd": "../.."
-        }
-      ]
-    ]
   }
 }

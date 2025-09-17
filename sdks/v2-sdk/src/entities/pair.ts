@@ -11,7 +11,7 @@ import {
   Price,
   sqrt,
   Token,
-} from '@uniswap/sdk-core'
+} from '@swyrlfi/sdk-core'
 
 import {
   _1000,

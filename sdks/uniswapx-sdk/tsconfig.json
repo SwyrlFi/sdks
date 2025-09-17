@@ -1,6 +1,10 @@
 {
   "include": [
-    "src"
+    "src/**/*"
+  ],
+  "exclude": [
+    "src/**/*.test.ts",
+    "src/**/*.test.tsx"
   ],
   "compilerOptions": {
     "outDir": "dist",
@@ -23,6 +27,7 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "types": []
   },
 }

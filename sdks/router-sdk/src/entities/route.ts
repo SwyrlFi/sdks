@@ -1,9 +1,9 @@
 // entities/route.ts
 
-import { Route as V2RouteSDK, Pair } from '@uniswap/v2-sdk'
-import { Route as V3RouteSDK, Pool } from '@uniswap/v3-sdk'
+import { Route as V2RouteSDK, Pair } from '@swyrlfi/v2-sdk'
+import { Route as V3RouteSDK, Pool } from '@swyrlfi/v3-sdk'
 import { Protocol } from './protocol'
-import { Currency, Price, Token } from '@uniswap/sdk-core'
+import { Currency, Price, Token } from '@swyrlfi/sdk-core'
 import { MixedRouteSDK } from './mixedRoute/route'
 
 export interface IRoute<TInput extends Currency, TOutput extends Currency, TPool extends Pool | Pair> {

@@ -2,9 +2,9 @@ import { pack } from '@ethersproject/solidity'
 import {
   Currency,
   Token,
-} from '@uniswap/sdk-core'
-import { Pair } from '@uniswap/v2-sdk'
-import { Pool } from '@uniswap/v3-sdk'
+} from '@swyrlfi/sdk-core'
+import { Pair } from '@swyrlfi/v2-sdk'
+import { Pool } from '@swyrlfi/v3-sdk'
 
 import { V2_FEE_PATH_PLACEHOLDER } from '../constants'
 import { MixedRouteSDK } from '../entities/mixedRoute/route'

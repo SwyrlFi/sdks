@@ -1,4 +1,4 @@
-import { ChainId } from "@uniswap/sdk-core";
+import { ChainId } from "@swyrlfi/sdk-core";
 
 type AddressMap = { readonly [key: number]: string };
 

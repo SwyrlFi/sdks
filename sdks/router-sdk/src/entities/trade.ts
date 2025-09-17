@@ -1,6 +1,6 @@
-import { Currency, CurrencyAmount, Fraction, Percent, Price, TradeType } from '@uniswap/sdk-core'
-import { Pair, Route as V2RouteSDK, Trade as V2TradeSDK } from '@uniswap/v2-sdk'
-import { Pool, Route as V3RouteSDK, Trade as V3TradeSDK } from '@uniswap/v3-sdk'
+import { Currency, CurrencyAmount, Fraction, Percent, Price, TradeType } from '@swyrlfi/sdk-core'
+import { Pair, Route as V2RouteSDK, Trade as V2TradeSDK } from '@swyrlfi/v2-sdk'
+import { Pool, Route as V3RouteSDK, Trade as V3TradeSDK } from '@swyrlfi/v3-sdk'
 import invariant from 'tiny-invariant'
 import { ONE, ONE_HUNDRED_PERCENT, ZERO, ZERO_PERCENT } from '../constants'
 import { MixedRouteSDK } from './mixedRoute/route'
@@ -52,9 +52,9 @@ export class Trade<TInput extends Currency, TOutput extends Currency, TTradeType
     // wrap v2 routes
     for (const { routev2, inputAmount, outputAmount } of v2Routes) {
       const route = new RouteV2(routev2)
-      this.routes.push(route)
+      this.routes.push(route as any)
       this.swaps.push({
-        route,
+        route: route as any,
         inputAmount,
         outputAmount,
       })
@@ -62,9 +62,9 @@ export class Trade<TInput extends Currency, TOutput extends Currency, TTradeType
     // wrap v3 routes
     for (const { routev3, inputAmount, outputAmount } of v3Routes) {
       const route = new RouteV3(routev3)
-      this.routes.push(route)
+      this.routes.push(route as any)
       this.swaps.push({
-        route,
+        route: route as any,
         inputAmount,
         outputAmount,
       })
@@ -301,7 +301,7 @@ export class Trade<TInput extends Currency, TOutput extends Currency, TTradeType
     }[] = []
 
     for (const { routev2, amount } of v2Routes) {
-      const v2Trade = new V2TradeSDK(routev2, amount, tradeType)
+      const v2Trade = new V2TradeSDK(routev2, amount as any, tradeType)
       const { inputAmount, outputAmount } = v2Trade
 
       populatedV2Routes.push({
@@ -312,7 +312,7 @@ export class Trade<TInput extends Currency, TOutput extends Currency, TTradeType
     }
 
     for (const { routev3, amount } of v3Routes) {
-      const v3Trade = await V3TradeSDK.fromRoute(routev3, amount, tradeType)
+      const v3Trade = await V3TradeSDK.fromRoute(routev3, amount as any, tradeType)
       const { inputAmount, outputAmount } = v3Trade
 
       populatedV3Routes.push({

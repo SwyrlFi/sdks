@@ -9,12 +9,12 @@ import {
   TradeType,
   validateAndParseAddress,
   WETH9,
-} from '@uniswap/sdk-core'
+} from '@swyrlfi/sdk-core'
 import {
   encodeV2PathToRoutes,
   Trade as V2Trade,
   V2RouteStruct,
-} from '@uniswap/v2-sdk'
+} from '@swyrlfi/v2-sdk'
 import {
   FeeOptions,
   MethodParameters,
@@ -25,7 +25,7 @@ import {
   SelfPermit,
   toHex,
   Trade as V3Trade,
-} from '@uniswap/v3-sdk'
+} from '@swyrlfi/v3-sdk'
 
 import {
   ApprovalTypes,
@@ -383,7 +383,7 @@ export abstract class SwapRouter {
         if (route.protocol === Protocol.V2) {
           individualTrades.push(
             new V2Trade(
-              route as RouteV2<Currency, Currency>,
+              route as unknown as RouteV2<Currency, Currency>,
               trades.tradeType === TradeType.EXACT_INPUT ? inputAmount : outputAmount,
               trades.tradeType
             )
@@ -391,7 +391,7 @@ export abstract class SwapRouter {
         } else if (route.protocol === Protocol.V3) {
           individualTrades.push(
             V3Trade.createUncheckedTrade({
-              route: route as RouteV3<Currency, Currency>,
+              route: route as unknown as RouteV3<Currency, Currency>,
               inputAmount,
               outputAmount,
               tradeType: trades.tradeType,

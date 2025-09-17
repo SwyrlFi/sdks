@@ -1,6 +1,6 @@
 import { pack } from '@ethersproject/solidity'
-import { Currency } from '@uniswap/sdk-core'
-import { Route as RouteV3 } from '@uniswap/v3-sdk'
+import { Currency } from '@swyrlfi/sdk-core'
+import { Route as RouteV3 } from '@swyrlfi/v3-sdk'
 
 // V3 paths are encoded as alternating token addresses and tickSpacings
 export function encodeV3RouteWithTickSpacing(route: RouteV3<Currency, Currency>): string {

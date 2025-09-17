@@ -2,7 +2,7 @@ import { pack } from '@ethersproject/solidity'
 import {
   Currency,
   Token,
-} from '@uniswap/sdk-core'
+} from '@swyrlfi/sdk-core'
 
 import { Pool } from '../entities/pool'
 import { Route } from '../entities/route'

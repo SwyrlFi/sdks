@@ -4,7 +4,7 @@ import {
   ChainId,
   Percent,
   V2_FACTORY_ADDRESSES,
-} from '@uniswap/sdk-core'
+} from '@swyrlfi/sdk-core'
 
 /**
  * @deprecated use FACTORY_ADDRESS_MAP instead

@@ -6,7 +6,7 @@ import {
   CurrencyAmount,
   Price,
   Token,
-} from '@uniswap/sdk-core'
+} from '@swyrlfi/sdk-core'
 
 import {
   FACTORY_ADDRESS,

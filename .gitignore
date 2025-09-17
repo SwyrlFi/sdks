@@ -5,6 +5,7 @@
 
 # Turbo
 .turbo
+**/dist
 
 # dependencies
 node_modules

@@ -1,7 +1,7 @@
 import { Interface } from '@ethersproject/abi'
-import { BigintIsh } from '@uniswap/sdk-core'
+import { BigintIsh } from '@swyrlfi/sdk-core'
 import { abi } from '@uniswap/swap-router-contracts/artifacts/contracts/interfaces/IMulticallExtended.sol/IMulticallExtended.json'
-import { Multicall, toHex } from '@uniswap/v3-sdk'
+import { Multicall, toHex } from '@swyrlfi/v3-sdk'
 
 // deadline or previousBlockhash
 export type Validation = BigintIsh | string

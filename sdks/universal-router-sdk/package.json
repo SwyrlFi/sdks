@@ -1,5 +1,6 @@
 {
-  "name": "@uniswap/universal-router-sdk",
+  "name": "@swyrlfi/universal-router-sdk",
+  "version": "1.0.0-alpha.5",
   "description": "sdk for integrating with the Universal Router contracts",
   "repository": "https://github.com/Uniswap/sdks.git",
   "keywords": [
@@ -20,22 +21,21 @@
     "docs": "typedoc",
     "forge:fix": "forge fmt",
     "install:ur": "cd node_modules/@uniswap/universal-router && forge install",
-    "lint": "yarn prettier",
-    "lint:fix": "yarn prettier:fix && yarn forge:fix",
+    "lint": "pnpm prettier",
+    "lint:fix": "pnpm prettier:fix && pnpm forge:fix",
     "prettier": "prettier --check '**/*.ts' && prettier --check '**/*.json'",
     "prettier:fix": "prettier --write '**/*.ts' && prettier --write '**/*.json'",
-    "release": "semantic-release",
-    "test": "yarn test:hardhat && yarn test:forge",
-    "test:forge": "yarn install:ur && forge test",
+    "test": "pnpm test:hardhat && pnpm test:forge",
+    "test:forge": "pnpm install:ur && forge test",
     "test:hardhat": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' hardhat test"
   },
   "dependencies": {
-    "@uniswap/permit2-sdk": "workspace:*",
-    "@uniswap/router-sdk": "workspace:*",
-    "@uniswap/sdk-core": "workspace:*",
+    "@swyrlfi/permit2-sdk": "workspace:*",
+    "@swyrlfi/router-sdk": "workspace:*",
+    "@swyrlfi/sdk-core": "workspace:*",
     "@uniswap/universal-router": "1.6.0",
-    "@uniswap/v2-sdk": "workspace:*",
-    "@uniswap/v3-sdk": "workspace:*",
+    "@swyrlfi/v2-sdk": "workspace:*",
+    "@swyrlfi/v3-sdk": "workspace:*",
     "bignumber.js": "^9.0.2",
     "ethers": "^5.7.0"
   },
@@ -63,34 +63,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "release": {
-    "extends": "semantic-release-monorepo",
-    "branches": [
-      {
-        "name": "main",
-        "prerelease": false
-      }
-    ],
-    "plugins": [
-      [
-        "@semantic-release/commit-analyzer",
-        {
-          "preset": "angular",
-          "releaseRules": "../../publishing/release-rules.cjs"
-        }
-      ],
-      "@semantic-release/release-notes-generator",
-      "@semantic-release/npm",
-      "@semantic-release/github",
-      [
-        "@semantic-release/exec",
-        {
-          "successCmd": "git restore yarn.lock && yarn",
-          "failCmd": "git restore yarn.lock && yarn",
-          "execCwd": "../.."
-        }
-      ]
-    ]
   }
 }

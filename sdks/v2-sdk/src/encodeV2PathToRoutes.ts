@@ -1,4 +1,4 @@
-import { Token } from '@uniswap/sdk-core'
+import { Token } from '@swyrlfi/sdk-core'
 
 import { V2RouteStruct } from './entities/V2RouteStruct'
 

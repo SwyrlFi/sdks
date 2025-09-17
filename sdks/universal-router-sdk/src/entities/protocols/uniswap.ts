@@ -17,22 +17,22 @@ import {
   RouteV3,
   SwapOptions as RouterSwapOptions,
   Trade as RouterTrade,
-} from '@uniswap/router-sdk'
+} from '@swyrlfi/router-sdk'
 import {
   Currency,
   CurrencyAmount,
   Percent,
   TradeType,
-} from '@uniswap/sdk-core'
+} from '@swyrlfi/sdk-core'
 import {
   Pair,
   Trade as V2Trade,
-} from '@uniswap/v2-sdk'
+} from '@swyrlfi/v2-sdk'
 import {
   encodeRouteToPath,
   Pool,
   Trade as V3Trade,
-} from '@uniswap/v3-sdk'
+} from '@swyrlfi/v3-sdk'
 
 import {
   CONTRACT_BALANCE,
