@@ -1,5 +1,17 @@
 # @swyrlfi/uniswapx-sdk
 
+## 1.0.0-alpha.7
+
+### Major Changes
+
+- update
+
+### Patch Changes
+
+- Updated dependencies
+  - @swyrlfi/permit2-sdk@1.0.0-alpha.7
+  - @swyrlfi/sdk-core@1.0.0-alpha.7
+
 ## 1.0.0-alpha.6
 
 ### Major Changes

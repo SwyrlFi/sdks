@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.0.0-alpha.7
+
+### Major Changes
+
+- update
+
+### Patch Changes
+
+- Updated dependencies
+  - @swyrlfi/universal-router-sdk@1.0.0-alpha.7
+  - @swyrlfi/permit2-sdk@1.0.0-alpha.7
+  - @swyrlfi/router-sdk@1.0.0-alpha.7
+  - @swyrlfi/sdk-core@1.0.0-alpha.7
+  - @swyrlfi/v2-sdk@1.0.0-alpha.7
+  - @swyrlfi/v3-sdk@1.0.0-alpha.7
+
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
 ### [3.6.0](https://github.com/Uniswap/smart-order-router/compare/v3.5.0...v3.6.0) (2023-02-24)

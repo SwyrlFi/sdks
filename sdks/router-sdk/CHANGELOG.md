@@ -1,5 +1,18 @@
 # @swyrlfi/router-sdk
 
+## 1.0.0-alpha.7
+
+### Major Changes
+
+- update
+
+### Patch Changes
+
+- Updated dependencies
+  - @swyrlfi/sdk-core@1.0.0-alpha.7
+  - @swyrlfi/v2-sdk@1.0.0-alpha.7
+  - @swyrlfi/v3-sdk@1.0.0-alpha.7
+
 ## 1.0.0-alpha.6
 
 ### Major Changes
