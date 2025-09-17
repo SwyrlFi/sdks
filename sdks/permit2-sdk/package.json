@@ -1,6 +1,6 @@
 {
   "name": "@swyrlfi/permit2-sdk",
-  "version": "1.0.0-alpha.5",
+  "version": "1.0.0-alpha.6",
   "description": "An sdk for interacting with permit2.",
   "repository": "https://github.com/Uniswap/sdks.git",
   "keywords": [

@@ -27,7 +27,9 @@
     "g:typecheck": "turbo run typecheck",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "pnpm run g:build && changeset publish",
+    "prepublish": "node scripts/prepare-publish.js",
+    "postpublish": "node scripts/restore-workspace.js",
+    "release": "pnpm run g:build && pnpm run prepublish && changeset publish && pnpm run postpublish",
     "postinstall": "node scripts/fix-nested-symlinks.js"
   }
 }

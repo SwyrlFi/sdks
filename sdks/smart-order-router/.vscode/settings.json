@@ -1,0 +1,11 @@
+{
+  "editor.formatOnSave": true,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.prettierPath": "C:/Program Files/nodejs/prettier",
+  "prettier.configPath": ".prettierrc",
+  "[ignore]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  }
+}

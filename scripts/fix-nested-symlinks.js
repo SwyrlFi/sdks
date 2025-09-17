@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 // 清理嵌套的 @swyrlfi 符号链接
-const packages = ['v2-sdk', 'v3-sdk', 'router-sdk', 'universal-router-sdk', 'uniswapx-sdk', 'permit2-sdk'];
+const packages = ['v2-sdk', 'v3-sdk', 'router-sdk', 'universal-router-sdk', 'uniswapx-sdk', 'permit2-sdk', 'smart-order-router'];
 
 packages.forEach(pkg => {
   const nestedPath = path.join(__dirname, '..', 'sdks', pkg, 'node_modules', '@swyrlfi');

@@ -1,5 +1,20 @@
 # @swyrlfi/universal-router-sdk
 
+## 1.0.0-alpha.6
+
+### Major Changes
+
+- bump version
+
+### Patch Changes
+
+- Updated dependencies
+  - @swyrlfi/permit2-sdk@1.0.0-alpha.6
+  - @swyrlfi/router-sdk@1.0.0-alpha.6
+  - @swyrlfi/sdk-core@1.0.0-alpha.6
+  - @swyrlfi/v2-sdk@1.0.0-alpha.6
+  - @swyrlfi/v3-sdk@1.0.0-alpha.6
+
 ## 1.0.0-alpha.5
 
 ### Major Changes
