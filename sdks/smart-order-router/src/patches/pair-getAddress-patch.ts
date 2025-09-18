@@ -48,7 +48,7 @@ Pair.getAddress = function patchedGetAddress(tokenA: Token, tokenB: Token): stri
       });
 
     default:
-      return _originalGetAddress(token0, token1);
+      return _originalGetAddress(token0, token1, false);
   }
 } as typeof Pair.getAddress;
 
@@ -56,4 +56,4 @@ Pair.getAddress = function patchedGetAddress(tokenA: Token, tokenB: Token): stri
 console.info('[Patch] Pair.getAddress overridden for custom chains SONIC / MONAD_TESTNET');
 
 // Optionally export something to make sure file is treated as a module.
-export {};
+export { };

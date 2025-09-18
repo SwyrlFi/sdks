@@ -23,3 +23,7 @@
 	path = sdks/universal-router-sdk/lib/openzeppelin-contracts
 	url = https://github.com/openzeppelin/openzeppelin-contracts
 	branch = v4.8.0
+[submodule "apps/shadow-deepsea"]
+	path = apps/shadow-deepsea
+	url = git@github.com:mur1desu/shadow-deepsea.git
+	branch = xswyrl

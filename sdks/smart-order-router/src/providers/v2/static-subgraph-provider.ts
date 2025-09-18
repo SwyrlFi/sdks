@@ -87,7 +87,7 @@ const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
  * @class StaticV2SubgraphProvider
  */
 export class StaticV2SubgraphProvider implements IV2SubgraphProvider {
-  constructor(private chainId: ChainId) {}
+  constructor(private chainId: ChainId) { }
 
   public async getPools(
     tokenIn?: Token,
@@ -128,16 +128,18 @@ export class StaticV2SubgraphProvider implements IV2SubgraphProvider {
           poolAddress = computePairAddress({
             factoryAddress: SONIC_V2_PAIR_FACTORY_ADDRESS,
             tokenA: tokenA,
-            tokenB: tokenB
+            tokenB: tokenB,
+            stable: false
           });
         } else if ([ChainId.MONAD_TESTNET, ChainId.MONAD_DEVNET].includes(this.chainId)) {
           poolAddress = computePairAddress({
             factoryAddress: V2_PAIR_FACTORY_ADDRESS[this.chainId]!,
             tokenA: tokenA,
-            tokenB: tokenB
+            tokenB: tokenB,
+            stable: false
           });
         } else {
-          poolAddress = Pair.getAddress(tokenA, tokenB);
+          poolAddress = Pair.getAddress(tokenA, tokenB, false);
         }
 
         if (poolAddressSet.has(poolAddress)) {

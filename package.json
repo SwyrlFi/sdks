@@ -18,6 +18,11 @@
   },
   "packageManager": "pnpm@9.12.3",
   "private": true,
+  "pnpm": {
+    "overrides": {
+      "jsbi": "3.2.5"
+    }
+  },
   "scripts": {
     "g:check:deps:mismatch": "manypkg check",
     "g:build": "turbo run build",

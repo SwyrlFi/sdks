@@ -80,7 +80,7 @@ export class V2PoolProvider implements IV2PoolProvider {
       minTimeout: 50,
       maxTimeout: 500,
     }
-  ) {}
+  ) { }
 
   public async getPools(
     tokenPairs: [Token, Token][],
@@ -118,10 +118,9 @@ export class V2PoolProvider implements IV2PoolProvider {
     );
 
     log.info(
-      `Got reserves for ${poolAddressSet.size} pools ${
-        providerConfig?.blockNumber
-          ? `as of block: ${await providerConfig?.blockNumber}.`
-          : ``
+      `Got reserves for ${poolAddressSet.size} pools ${providerConfig?.blockNumber
+        ? `as of block: ${await providerConfig?.blockNumber}.`
+        : ``
       }`
     );
 
@@ -144,7 +143,8 @@ export class V2PoolProvider implements IV2PoolProvider {
 
       const pool = new Pair(
         CurrencyAmount.fromRawAmount(token0, reserve0.toString()),
-        CurrencyAmount.fromRawAmount(token1, reserve1.toString())
+        CurrencyAmount.fromRawAmount(token1, reserve1.toString()),
+        false,
       );
 
       const poolAddress = sortedPoolAddresses[i]!;
@@ -215,7 +215,7 @@ export class V2PoolProvider implements IV2PoolProvider {
         initCodeHashManualOverride: V2_PAIR_CODE_HASH[this.chainId]!
       });
     } else {
-      poolAddress = Pair.getAddress(token0, token1);
+      poolAddress = Pair.getAddress(token0, token1, false);
     }
 
     this.POOL_ADDRESS_CACHE[cacheKey] = poolAddress;

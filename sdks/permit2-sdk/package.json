@@ -1,6 +1,6 @@
 {
   "name": "@swyrlfi/permit2-sdk",
-  "version": "1.0.0-alpha.7",
+  "version": "1.0.0-alpha.8",
   "description": "An sdk for interacting with permit2.",
   "repository": "https://github.com/Uniswap/sdks.git",
   "keywords": [
@@ -10,6 +10,7 @@
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
+  "module": "dist/permit2-sdk.esm.js",
   "files": [
     "dist"
   ],

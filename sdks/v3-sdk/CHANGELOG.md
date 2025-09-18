@@ -1,5 +1,16 @@
 # @swyrlfi/v3-sdk
 
+## 1.0.0-alpha.8
+
+### Major Changes
+
+- bump version
+
+### Patch Changes
+
+- Updated dependencies
+  - @swyrlfi/sdk-core@1.0.0-alpha.8
+
 ## 1.0.0-alpha.7
 
 ### Major Changes

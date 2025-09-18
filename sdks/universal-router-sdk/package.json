@@ -1,6 +1,6 @@
 {
   "name": "@swyrlfi/universal-router-sdk",
-  "version": "1.0.0-alpha.7",
+  "version": "1.0.0-alpha.8",
   "description": "sdk for integrating with the Universal Router contracts",
   "repository": "https://github.com/Uniswap/sdks.git",
   "keywords": [
@@ -10,6 +10,7 @@
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
+  "module": "dist/universal-router-sdk.esm.js",
   "files": [
     "dist"
   ],
