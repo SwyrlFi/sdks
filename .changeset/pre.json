@@ -10,13 +10,15 @@
     "@swyrlfi/universal-router-sdk": "1.0.0-alpha.4",
     "@swyrlfi/v2-sdk": "1.0.0-alpha.4",
     "@swyrlfi/v3-sdk": "1.0.0-alpha.4",
-    "@swyrlfi/smart-order-router": "1.0.0-alpha.6"
+    "@swyrlfi/smart-order-router": "1.0.0-alpha.6",
+    "oni": "0.0.0"
   },
   "changesets": [
     "bitter-hoops-sleep",
     "common-foxes-film",
     "early-games-eat",
     "hot-beans-sing",
-    "olive-files-cheer"
+    "olive-files-cheer",
+    "six-cows-create"
   ]
 }

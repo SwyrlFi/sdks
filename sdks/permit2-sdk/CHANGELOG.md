@@ -1,5 +1,11 @@
 # @swyrlfi/permit2-sdk
 
+## 1.0.0-alpha.9
+
+### Major Changes
+
+- mixed route fixed
+
 ## 1.0.0-alpha.8
 
 ### Major Changes

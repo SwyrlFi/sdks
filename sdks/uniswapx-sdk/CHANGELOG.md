@@ -1,5 +1,17 @@
 # @swyrlfi/uniswapx-sdk
 
+## 1.0.0-alpha.9
+
+### Major Changes
+
+- mixed route fixed
+
+### Patch Changes
+
+- Updated dependencies
+  - @swyrlfi/permit2-sdk@1.0.0-alpha.9
+  - @swyrlfi/sdk-core@1.0.0-alpha.9
+
 ## 1.0.0-alpha.8
 
 ### Major Changes
