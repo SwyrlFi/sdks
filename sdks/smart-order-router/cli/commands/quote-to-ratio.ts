@@ -1,8 +1,15 @@
+import dotenv from 'dotenv';
+
 import { Logger } from '@ethersproject/logger';
 import { flags } from '@oclif/command';
-import { Currency, Ether, Fraction, Percent } from '@uniswap/sdk-core';
+import {
+  Currency,
+  Ether,
+  Fraction,
+  Percent,
+} from '@swyrlfi/sdk-core';
 import { Position } from '@swyrlfi/v3-sdk';
-import dotenv from 'dotenv';
+
 import {
   ID_TO_CHAIN_ID,
   parseAmount,

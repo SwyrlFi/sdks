@@ -193,7 +193,8 @@ export class RouterTradeAdapter {
   private static toPair = ({ reserve0, reserve1 }: V2PoolInRoute): Pair => {
     return new Pair(
       CurrencyAmount.fromRawAmount(RouterTradeAdapter.toToken(reserve0.token), reserve0.quotient),
-      CurrencyAmount.fromRawAmount(RouterTradeAdapter.toToken(reserve1.token), reserve1.quotient)
+      CurrencyAmount.fromRawAmount(RouterTradeAdapter.toToken(reserve1.token), reserve1.quotient),
+      false
     )
   }
 

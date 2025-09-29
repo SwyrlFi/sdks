@@ -1,4 +1,4 @@
-import { Token, TradeType } from '@uniswap/sdk-core';
+import { Token, TradeType } from '@swyrlfi/sdk-core';
 import { encodeSqrtRatioX96, FeeAmount, Pool } from '@swyrlfi/v3-sdk';
 import _ from 'lodash';
 import sinon from 'sinon';

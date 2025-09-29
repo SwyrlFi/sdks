@@ -1,5 +1,5 @@
 import { BigNumber } from '@ethersproject/bignumber';
-import { Fraction, TradeType } from '@uniswap/sdk-core';
+import { Fraction, TradeType } from '@swyrlfi/sdk-core';
 import { Pair } from '@swyrlfi/v2-sdk';
 import { Pool } from '@swyrlfi/v3-sdk';
 import JSBI from 'jsbi';

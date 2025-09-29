@@ -2,6 +2,27 @@
  * @jest-environment hardhat
  */
 
+import 'jest-environment-hardhat';
+
+import bunyan from 'bunyan';
+import {
+  BigNumber,
+  providers,
+  Wallet,
+} from 'ethers';
+import { parseEther } from 'ethers/lib/utils';
+import _ from 'lodash';
+import NodeCache from 'node-cache';
+
+import {
+  JsonRpcProvider,
+  JsonRpcSigner,
+} from '@ethersproject/providers';
+import {
+  AllowanceTransfer,
+  PermitSingle,
+} from '@swyrlfi/permit2-sdk';
+import { Protocol } from '@swyrlfi/router-sdk';
 import {
   Currency,
   CurrencyAmount,
@@ -9,7 +30,21 @@ import {
   Percent,
   Token,
   TradeType,
-} from '@uniswap/sdk-core';
+} from '@swyrlfi/sdk-core';
+import {
+  PERMIT2_ADDRESS,
+  UNIVERSAL_ROUTER_ADDRESS as UNIVERSAL_ROUTER_ADDRESS_BY_CHAIN,
+} from '@swyrlfi/universal-router-sdk';
+import {
+  Permit2Permit,
+} from '@swyrlfi/universal-router-sdk/dist/utils/permit2';
+import { Pair } from '@swyrlfi/v2-sdk';
+import {
+  encodeSqrtRatioX96,
+  FeeAmount,
+  Pool,
+} from '@swyrlfi/v3-sdk';
+
 import {
   AlphaRouter,
   AlphaRouterConfig,
@@ -27,8 +62,8 @@ import {
   ID_TO_PROVIDER,
   MethodParameters,
   MixedRoute,
-  nativeOnChain,
   NATIVE_CURRENCY,
+  nativeOnChain,
   NodeJSCache,
   OnChainQuoteProvider,
   parseAmount,
@@ -36,23 +71,22 @@ import {
   SimulationStatus,
   StaticGasPriceProvider,
   SUPPORTED_CHAINS,
-  // SUPPORTED_CHAINS,
+  SWAP_ROUTER_02_ADDRESSES,
   SwapOptions,
   SwapType,
-  SWAP_ROUTER_02_ADDRESSES,
   TenderlySimulator,
-  UniswapMulticallProvider,
   UNI_GÖRLI,
   UNI_MAINNET,
+  UniswapMulticallProvider,
   USDC_BSC,
   USDC_ETHEREUM_GNOSIS,
   USDC_MAINNET,
   USDC_ON,
   USDT_BSC,
   USDT_MAINNET,
+  V2_SUPPORTED,
   V2PoolProvider,
   V2Route,
-  V2_SUPPORTED,
   V3PoolProvider,
   V3Route,
   WBTC_GNOSIS,
@@ -60,28 +94,15 @@ import {
   WETH9,
   WNATIVE_ON,
 } from '../../../../src';
+import {
+  DEFAULT_ROUTING_CONFIG_BY_CHAIN,
+} from '../../../../src/routers/alpha-router/config';
+import {
+  Permit2__factory,
+} from '../../../../src/types/other/factories/Permit2__factory';
+import { getBalanceAndApprove } from '../../../test-util/getBalanceAndApprove';
 import { WHALES } from '../../../test-util/whales';
 
-import 'jest-environment-hardhat';
-
-import { JsonRpcProvider, JsonRpcSigner } from '@ethersproject/providers';
-import { AllowanceTransfer, PermitSingle } from '@swyrlfi/permit2-sdk';
-import { Protocol } from '@swyrlfi/router-sdk';
-import {
-  PERMIT2_ADDRESS,
-  UNIVERSAL_ROUTER_ADDRESS as UNIVERSAL_ROUTER_ADDRESS_BY_CHAIN,
-} from '@swyrlfi/universal-router-sdk';
-import { Permit2Permit } from '@swyrlfi/universal-router-sdk/dist/utils/permit2';
-import { Pair } from '@swyrlfi/v2-sdk';
-import { encodeSqrtRatioX96, FeeAmount, Pool } from '@swyrlfi/v3-sdk';
-import bunyan from 'bunyan';
-import { BigNumber, providers, Wallet } from 'ethers';
-import { parseEther } from 'ethers/lib/utils';
-import _ from 'lodash';
-import NodeCache from 'node-cache';
-import { DEFAULT_ROUTING_CONFIG_BY_CHAIN } from '../../../../src/routers/alpha-router/config';
-import { Permit2__factory } from '../../../../src/types/other/factories/Permit2__factory';
-import { getBalanceAndApprove } from '../../../test-util/getBalanceAndApprove';
 const FORK_BLOCK = 16075500;
 const UNIVERSAL_ROUTER_ADDRESS = UNIVERSAL_ROUTER_ADDRESS_BY_CHAIN(1);
 const SLIPPAGE = new Percent(15, 100); // 5% or 10_000?

@@ -1,9 +1,15 @@
-import { BigNumber } from '@ethersproject/bignumber';
-import { Token } from '@uniswap/sdk-core';
-import { TokenList } from '@uniswap/token-lists';
-import { Pair } from '@swyrlfi/v2-sdk';
-import { encodeSqrtRatioX96, FeeAmount, Pool } from '@swyrlfi/v3-sdk';
 import _ from 'lodash';
+
+import { BigNumber } from '@ethersproject/bignumber';
+import { Token } from '@swyrlfi/sdk-core';
+import { Pair } from '@swyrlfi/v2-sdk';
+import {
+  encodeSqrtRatioX96,
+  FeeAmount,
+  Pool,
+} from '@swyrlfi/v3-sdk';
+import { TokenList } from '@uniswap/token-lists';
+
 import {
   AlphaRouterConfig,
   ChainId,

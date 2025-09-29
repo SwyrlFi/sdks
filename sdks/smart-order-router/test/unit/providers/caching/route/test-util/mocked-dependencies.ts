@@ -1,16 +1,22 @@
 import { BigNumber } from '@ethersproject/bignumber';
 import { Protocol } from '@swyrlfi/router-sdk';
-import { TradeType } from '@uniswap/sdk-core';
+import { TradeType } from '@swyrlfi/sdk-core';
 import { Pool } from '@swyrlfi/v3-sdk';
 import sinon from 'sinon';
-import { ChainId, DAI_MAINNET, USDC_MAINNET, V3Route, V3RouteWithValidQuote } from '../../../../../../build/main';
+import {
+  ChainId,
+  DAI_MAINNET,
+  USDC_MAINNET,
+  V3Route,
+  V3RouteWithValidQuote,
+} from '../../../../../../build/main';
 import {
   CachedRoutes,
   CurrencyAmount,
   DAI_MAINNET as DAI,
   IGasModel,
   USDC_MAINNET as USDC,
-  V3PoolProvider
+  V3PoolProvider,
 } from '../../../../../../src';
 import {
   buildMockV3PoolAccessor,
@@ -18,7 +24,7 @@ import {
   USDC_DAI_LOW,
   USDC_DAI_MEDIUM,
   USDC_WETH_LOW,
-  WETH9_USDT_LOW
+  WETH9_USDT_LOW,
 } from '../../../../../test-util/mock-data';
 
 export function getMockedV3GasModel(): IGasModel<V3RouteWithValidQuote> {
@@ -76,7 +82,9 @@ export function getV3RouteWithValidQuoteStub(): V3RouteWithValidQuote {
   });
 }
 
-export function getCachedRoutesStub(blockNumber: number): CachedRoutes | undefined {
+export function getCachedRoutesStub(
+  blockNumber: number
+): CachedRoutes | undefined {
   return CachedRoutes.fromRoutesWithValidQuotes(
     [getV3RouteWithValidQuoteStub()],
     ChainId.MAINNET,

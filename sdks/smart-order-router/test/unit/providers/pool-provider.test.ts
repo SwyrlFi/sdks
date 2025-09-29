@@ -1,14 +1,22 @@
-import { Token } from '@uniswap/sdk-core';
-import { ChainId, V3_CORE_FACTORY_ADDRESSES, WRAPPED_NATIVE_CURRENCY } from '../../../src/util';
-import { computePoolAddress, USDC_SONIC } from '../../../src/providers';
+import { Token } from '@swyrlfi/sdk-core';
+
+import {
+  computePoolAddress,
+  USDC_SONIC,
+} from '../../../src/providers';
 import { computeV2PoolAddress } from '../../../src/providers/v2/pool-provider';
+import {
+  ChainId,
+  V3_CORE_FACTORY_ADDRESSES,
+  WRAPPED_NATIVE_CURRENCY,
+} from '../../../src/util';
 import { SONIC_V2_PAIR_FACTORY_ADDRESS } from '../../../src/util/addresses';
 
 describe('computePoolAddress', () => {
   // 测试用的代币
-  const USDC = USDC_SONIC
+  const USDC = USDC_SONIC;
 
-  const WS = WRAPPED_NATIVE_CURRENCY[ChainId.SONIC]!
+  const WS = WRAPPED_NATIVE_CURRENCY[ChainId.SONIC]!;
 
   // 已知的池子地址（需要替换为实际部署的地址）
   const KNOWN_POOL_ADDRESSES = {
@@ -19,7 +27,7 @@ describe('computePoolAddress', () => {
     // 测试不同的 tickSpacing
     const tickSpacings = [50];
 
-    tickSpacings.forEach(tickSpacing => {
+    tickSpacings.forEach((tickSpacing) => {
       const computedAddress = computePoolAddress({
         factoryAddress: V3_CORE_FACTORY_ADDRESSES[ChainId.SONIC]!,
         tokenA: USDC,
@@ -74,7 +82,6 @@ describe('computePoolAddress', () => {
 
     expect(address1.toLowerCase()).not.toBe(address2.toLowerCase());
   });
-
 });
 
 describe('computeV2PoolAddress', () => {
@@ -83,10 +90,10 @@ describe('computeV2PoolAddress', () => {
   const WS = WRAPPED_NATIVE_CURRENCY[ChainId.SONIC]!;
   const SHADOW = new Token(
     ChainId.SONIC,
-    "0x3333b97138D4b086720b5aE8A7844b1345a33333",
+    '0x3333b97138D4b086720b5aE8A7844b1345a33333',
     18,
-    "SHADOW",
-    "Shadow Token"
+    'SHADOW',
+    'Shadow Token'
   );
 
   // 已知的池子地址（需要替换为实际部署的地址）
@@ -99,13 +106,13 @@ describe('computeV2PoolAddress', () => {
       factoryAddress: SONIC_V2_PAIR_FACTORY_ADDRESS,
       tokenA: WS,
       tokenB: SHADOW,
-      stable: false
+      stable: false,
     });
 
     console.log('computedAddress', computedAddress);
 
     // 验证计算出的地址与已知地址匹配
-    const expectedAddress = KNOWN_V2_POOL_ADDRESSES['WS-SHADOW-Volatile']
+    const expectedAddress = KNOWN_V2_POOL_ADDRESSES['WS-SHADOW-Volatile'];
     expect(computedAddress.toLowerCase()).toBe(expectedAddress.toLowerCase());
   });
 
@@ -115,14 +122,14 @@ describe('computeV2PoolAddress', () => {
       factoryAddress: SONIC_V2_PAIR_FACTORY_ADDRESS,
       tokenA: USDC,
       tokenB: WS,
-      stable: true
+      stable: true,
     });
 
     const stableAddress2 = computeV2PoolAddress({
       factoryAddress: SONIC_V2_PAIR_FACTORY_ADDRESS,
       tokenA: WS,
       tokenB: USDC,
-      stable: true
+      stable: true,
     });
 
     expect(stableAddress1.toLowerCase()).toBe(stableAddress2.toLowerCase());
@@ -132,14 +139,14 @@ describe('computeV2PoolAddress', () => {
       factoryAddress: SONIC_V2_PAIR_FACTORY_ADDRESS,
       tokenA: USDC,
       tokenB: WS,
-      stable: false
+      stable: false,
     });
 
     const volatileAddress2 = computeV2PoolAddress({
       factoryAddress: SONIC_V2_PAIR_FACTORY_ADDRESS,
       tokenA: WS,
       tokenB: USDC,
-      stable: false
+      stable: false,
     });
 
     expect(volatileAddress1.toLowerCase()).toBe(volatileAddress2.toLowerCase());
@@ -150,14 +157,14 @@ describe('computeV2PoolAddress', () => {
       factoryAddress: SONIC_V2_PAIR_FACTORY_ADDRESS,
       tokenA: USDC,
       tokenB: WS,
-      stable: true
+      stable: true,
     });
 
     const volatileAddress = computeV2PoolAddress({
       factoryAddress: SONIC_V2_PAIR_FACTORY_ADDRESS,
       tokenA: USDC,
       tokenB: WS,
-      stable: false
+      stable: false,
     });
 
     expect(stableAddress.toLowerCase()).not.toBe(volatileAddress.toLowerCase());
@@ -177,14 +184,14 @@ describe('computeV2PoolAddress', () => {
       factoryAddress: SONIC_V2_PAIR_FACTORY_ADDRESS,
       tokenA: USDC,
       tokenB: WS,
-      stable: false
+      stable: false,
     });
 
     const address2 = computeV2PoolAddress({
       factoryAddress: SONIC_V2_PAIR_FACTORY_ADDRESS,
       tokenA: USDC,
       tokenB: THIRD_TOKEN,
-      stable: false
+      stable: false,
     });
 
     expect(address1.toLowerCase()).not.toBe(address2.toLowerCase());
@@ -194,14 +201,14 @@ describe('computeV2PoolAddress', () => {
       factoryAddress: SONIC_V2_PAIR_FACTORY_ADDRESS,
       tokenA: USDC,
       tokenB: WS,
-      stable: true
+      stable: true,
     });
 
     const stableAddress2 = computeV2PoolAddress({
       factoryAddress: SONIC_V2_PAIR_FACTORY_ADDRESS,
       tokenA: USDC,
       tokenB: THIRD_TOKEN,
-      stable: true
+      stable: true,
     });
 
     expect(stableAddress1.toLowerCase()).not.toBe(stableAddress2.toLowerCase());
@@ -212,14 +219,14 @@ describe('computeV2PoolAddress', () => {
       factoryAddress: SONIC_V2_PAIR_FACTORY_ADDRESS,
       tokenA: USDC,
       tokenB: WS,
-      stable: false
+      stable: false,
     });
 
     const address2 = computeV2PoolAddress({
       factoryAddress: SONIC_V2_PAIR_FACTORY_ADDRESS,
       tokenA: USDC,
       tokenB: WS,
-      stable: false
+      stable: false,
     });
 
     expect(address1).toBe(address2);
@@ -228,14 +235,14 @@ describe('computeV2PoolAddress', () => {
       factoryAddress: SONIC_V2_PAIR_FACTORY_ADDRESS,
       tokenA: USDC,
       tokenB: WS,
-      stable: true
+      stable: true,
     });
 
     const stableAddress2 = computeV2PoolAddress({
       factoryAddress: SONIC_V2_PAIR_FACTORY_ADDRESS,
       tokenA: USDC,
       tokenB: WS,
-      stable: true
+      stable: true,
     });
 
     expect(stableAddress1).toBe(stableAddress2);

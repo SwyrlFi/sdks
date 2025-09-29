@@ -1,33 +1,15 @@
 import JSBI from 'jsbi'
 import invariant from 'tiny-invariant'
 
-import {
-  BigintIsh,
-  CurrencyAmount,
-  Price,
-  Token,
-} from '@swyrlfi/sdk-core'
+import { BigintIsh, CurrencyAmount, Price, Token } from '@swyrlfi/sdk-core'
 
-import {
-  FACTORY_ADDRESS,
-  FeeAmount,
-  TICK_SPACINGS,
-} from '../constants'
-import {
-  NEGATIVE_ONE,
-  Q192,
-} from '../internalConstants'
+import { factoryAddress, FeeAmount, TICK_SPACINGS } from '../constants'
+import { NEGATIVE_ONE, Q192 } from '../internalConstants'
 import { computePoolAddress } from '../utils/computePoolAddress'
 import { TickMath } from '../utils/tickMath'
 import { v3Swap } from '../utils/v3swap'
-import {
-  Tick,
-  TickConstructorArgs,
-} from './tick'
-import {
-  NoTickDataProvider,
-  TickDataProvider,
-} from './tickDataProvider'
+import { Tick, TickConstructorArgs } from './tick'
+import { NoTickDataProvider, TickDataProvider } from './tickDataProvider'
 import { TickListDataProvider } from './tickListDataProvider'
 
 /**
@@ -58,7 +40,7 @@ export class Pool {
     factoryAddressOverride?: string
   ): string {
     return computePoolAddress({
-      factoryAddress: factoryAddressOverride ?? FACTORY_ADDRESS,
+      factoryAddress: factoryAddressOverride ?? factoryAddress(tokenA.chainId),
       fee,
       tokenA,
       tokenB,
