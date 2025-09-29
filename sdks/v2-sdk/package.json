@@ -1,6 +1,6 @@
 {
   "name": "@swyrlfi/v2-sdk",
-  "version": "1.0.0-alpha.9",
+  "version": "1.0.0-alpha.10",
   "description": "🛠 An SDK for building applications on top of Uniswap V2",
   "repository": "https://github.com/Uniswap/sdks.git",
   "keywords": [

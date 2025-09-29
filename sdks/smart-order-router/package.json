@@ -1,6 +1,6 @@
 {
   "name": "@swyrlfi/smart-order-router",
-  "version": "1.0.0-alpha.9",
+  "version": "1.0.0-alpha.10",
   "description": "Swyrlfi Smart Order Router",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
