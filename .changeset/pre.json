@@ -2,18 +2,18 @@
   "mode": "pre",
   "tag": "alpha",
   "initialVersions": {
-    "uniswapx-integration": "0.1.0",
-    "@swyrlfi/permit2-sdk": "1.0.0-alpha.4",
-    "@swyrlfi/router-sdk": "1.0.0-alpha.4",
-    "@swyrlfi/sdk-core": "1.0.0-alpha.4",
-    "@swyrlfi/uniswapx-sdk": "1.0.0-alpha.4",
-    "@swyrlfi/universal-router-sdk": "1.0.0-alpha.4",
-    "@swyrlfi/v2-sdk": "1.0.0-alpha.4",
-    "@swyrlfi/v3-sdk": "1.0.0-alpha.4",
-    "@swyrlfi/smart-order-router": "1.0.0-alpha.6",
-    "oni": "0.0.0"
+    "oni": "0.0.1-alpha.1",
+    "@swyrlfi/permit2-sdk": "1.0.0-alpha.10",
+    "@swyrlfi/router-sdk": "1.0.0-alpha.10",
+    "@swyrlfi/sdk-core": "1.0.0-alpha.10",
+    "@swyrlfi/smart-order-router": "1.0.0-alpha.10",
+    "@swyrlfi/uniswapx-sdk": "1.0.0-alpha.10",
+    "@swyrlfi/universal-router-sdk": "1.0.0-alpha.10",
+    "@swyrlfi/v2-sdk": "1.0.0-alpha.10",
+    "@swyrlfi/v3-sdk": "1.0.0-alpha.10"
   },
   "changesets": [
+    "big-experts-study",
     "bitter-hoops-sleep",
     "common-foxes-film",
     "early-games-eat",

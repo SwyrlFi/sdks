@@ -1,5 +1,17 @@
 # @swyrlfi/uniswapx-sdk
 
+## 1.0.0-alpha.11
+
+### Major Changes
+
+- update mainnet config
+
+### Patch Changes
+
+- Updated dependencies
+  - @swyrlfi/permit2-sdk@1.0.0-alpha.11
+  - @swyrlfi/sdk-core@1.0.0-alpha.11
+
 ## 1.0.0-alpha.10
 
 ### Major Changes
