@@ -206,7 +206,7 @@ export class V2PoolProvider implements IV2PoolProvider {
       });
 
       console.log('v2 poolAddress', poolAddress, token0, token1);
-    } else if ([ChainId.MONAD_TESTNET, ChainId.MONAD_DEVNET].includes(this.chainId)) {
+    } else if ([ChainId.MONAD_TESTNET, ChainId.MONAD_DEVNET, ChainId.MONAD_MAINNET].includes(this.chainId)) {
       poolAddress = computeV2PoolAddress({
         factoryAddress: V2_PAIR_FACTORY_ADDRESS[this.chainId]!,
         tokenA,

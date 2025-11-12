@@ -232,7 +232,7 @@ export class V2HeuristicGasModelFactory extends IV2GasModelFactory {
   ): Promise<Pair> {
     const usdTokens = usdGasTokensByChain[chainId];
 
-    if (!usdTokens && ![ChainId.MONAD_TESTNET, ChainId.MONAD_DEVNET].includes(chainId)) {
+    if (!usdTokens && ![ChainId.MONAD_TESTNET, ChainId.MONAD_DEVNET, ChainId.MONAD_MAINNET].includes(chainId)) {
       throw new Error(
         `Could not find a USD token for computing gas costs on ${chainId}`
       );

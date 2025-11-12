@@ -124,6 +124,11 @@ const CHAIN_CONFIGS: { [key: number]: ChainConfig } = {
     weth: '0xBBC8CbBAF88417e3EC5d8ec1c8D7A1528b6596aC',
     creationBlock: 0,  // To be updated when known
   },
+  [143]: {  // MONAD_MAINNET
+    router: '0x6B096391742bAaEd539Ad25F44dC775065f73322', // UNIVERSAL_ROUTER
+    weth: '0x3bd359C1119dA7Da1D913D1C4D2B7c461115433A', // WETH
+    creationBlock: 0,  // To be updated when known
+  },
 }
 
 export const UNIVERSAL_ROUTER_ADDRESS = (chainId: number): string => {

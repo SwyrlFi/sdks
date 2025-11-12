@@ -138,7 +138,7 @@ export class V3Quoter extends BaseQuoter<V3Route> {
   ): Promise<GetQuotesResult> {
     log.info('Starting to get V3 quotes');
 
-    if (gasModel === undefined && ![ChainId.MONAD_TESTNET, ChainId.MONAD_DEVNET].includes(this.chainId)) {
+    if (gasModel === undefined && ![ChainId.MONAD_TESTNET, ChainId.MONAD_DEVNET, ChainId.MONAD_MAINNET].includes(this.chainId)) {
       throw new Error(
         'GasModel for V3RouteWithValidQuote is required to getQuotes'
       );

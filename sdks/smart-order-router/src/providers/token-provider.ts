@@ -677,6 +677,14 @@ export const USDC_MONAD_DEVNET = new Token(
   'USD Coin'
 );
 
+export const USDC_MONAD_MAINNET = new Token(
+  ChainId.MONAD_MAINNET,
+  '0x754704Bc059F8C67012fEd69BC8A327a5aafb603', // To be configured
+  6,
+  'USDC',
+  'USD Coin'
+);
+
 export class TokenProvider implements ITokenProvider {
   constructor(
     private chainId: ChainId,
@@ -752,10 +760,8 @@ export class TokenProvider implements ITokenProvider {
       }
 
       log.info(
-        `Got token symbol and decimals for ${
-          Object.values(addressToToken).length
-        } out of ${addresses.length} tokens on-chain ${
-          providerConfig ? `as of: ${providerConfig?.blockNumber}` : ''
+        `Got token symbol and decimals for ${Object.values(addressToToken).length
+        } out of ${addresses.length} tokens on-chain ${providerConfig ? `as of: ${providerConfig?.blockNumber}` : ''
         }`
       );
     }

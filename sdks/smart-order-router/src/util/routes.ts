@@ -73,7 +73,7 @@ export const routeToString = (
         } catch (error) {
           return ` -- [V2_ADDRESS_ERROR] --> `;
         }
-      } else if ([ChainId.MONAD_TESTNET, ChainId.MONAD_DEVNET].includes(pair.chainId)) {
+      } else if ([ChainId.MONAD_TESTNET, ChainId.MONAD_DEVNET, ChainId.MONAD_MAINNET].includes(pair.chainId)) {
         const factoryAddress = V2_PAIR_FACTORY_ADDRESS[pair.chainId]!;
         try {
           const address = computeV2PoolAddress({
@@ -112,7 +112,7 @@ export const routeToString = (
         } catch (error) {
           return ` -- ${pool.fee / 10000}% [V3_ADDRESS_ERROR] --> `;
         }
-      } else if ([ChainId.MONAD_TESTNET, ChainId.MONAD_DEVNET].includes(pool.chainId)) {
+      } else if ([ChainId.MONAD_TESTNET, ChainId.MONAD_DEVNET, ChainId.MONAD_MAINNET].includes(pool.chainId)) {
         const factoryAddress = V3_CORE_FACTORY_ADDRESSES[pool.chainId];
         if (!factoryAddress) {
           return ` -- ${pool.fee / 10000}% [V3_FACTORY_NOT_FOUND] --> `;

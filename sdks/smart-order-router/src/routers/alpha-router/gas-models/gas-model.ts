@@ -26,6 +26,7 @@ import {
   USDC_KOVAN,
   USDC_MAINNET,
   USDC_MONAD_DEVNET,
+  USDC_MONAD_MAINNET,
   USDC_MONAD_TESTNET,
   USDC_MOONBEAM,
   USDC_OPTIMISM,
@@ -93,6 +94,7 @@ export const usdGasTokensByChain: { [chainId in ChainId]?: Token[] } = {
   [ChainId.SONIC]: [USDC_SONIC, USDT_SONIC],
   [ChainId.MONAD_TESTNET]: [USDC_MONAD_TESTNET],
   [ChainId.MONAD_DEVNET]: [USDC_MONAD_DEVNET],
+  [ChainId.MONAD_MAINNET]: [USDC_MONAD_MAINNET],
 };
 
 export type L1ToL2GasCosts = {

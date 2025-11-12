@@ -54,7 +54,7 @@ export const V2_FACTORY_ADDRESSES: AddressMap = {
   [ChainId.BLAST]: '0x5C346464d33F90bABaf70dB6388507CC889C1070',
   [ChainId.MONAD_TESTNET]: '0x42fF5785e7bB0120B9a0Ff1E1937e9FEa85Fa9a2',
   [ChainId.MONAD_DEVNET]: '0x6Cfe3Ff55cCcC20627ED9a9b4E7A74B364ce56B8', // PAIR_FACTORY
-  // [ChainId.MONAD_MAINNET]: '', // To be configured
+  [ChainId.MONAD_MAINNET]: '0xD158CDfeC90E9429A290c3144Afeb72E8C23603a', // PAIR_FACTORY
 }
 /**
  * @deprecated use V2_ROUTER_ADDRESSES instead
@@ -72,7 +72,7 @@ export const V2_ROUTER_ADDRESSES: AddressMap = {
   [ChainId.BLAST]: '0xBB66Eb1c5e875933D44DAe661dbD80e5D9B03035',
   [ChainId.MONAD_TESTNET]: '0xBb1c0A20D503BA2583A2ac57c2A09AB154175595',
   [ChainId.MONAD_DEVNET]: '0x5020e3A65a30ce1B5f1420D70868324c7E7DdA00', // ROUTER
-  // [ChainId.MONAD_MAINNET]: '', // To be configured
+  [ChainId.MONAD_MAINNET]: '0x020e762D529628aDd359a9f4D2f63A3BCFe373Bd', // ROUTER
 }
 
 // Networks that share most of the same addresses i.e. Mainnet, Goerli, Optimism, Arbitrum, Polygon
@@ -278,17 +278,16 @@ const MONAD_DEVNET_ADDRESSES: ChainAddresses = {
   mixedRouteQuoterV1Address: '0x9051eF4A044Be0Aa6493489a2D6E635A5B5Fa19b' // MIXED_ROUTE_QUOTER_V1
 }
 
-// Placeholder for MONAD_MAINNET - to be configured when chain is launched
-// const MONAD_MAINNET_ADDRESSES: ChainAddresses = {
-//   v3CoreFactoryAddress: '',
-//   multicallAddress: '',
-//   quoterAddress: '',
-//   v3MigratorAddress: '',
-//   nonfungiblePositionManagerAddress: '',
-//   tickLensAddress: '',
-//   swapRouter02Address: '',
-//   mixedRouteQuoterV1Address: '',
-// }
+const MONAD_MAINNET_ADDRESSES: ChainAddresses = {
+  v3CoreFactoryAddress: '0x02a898F85a6984213Ac6d2577ff3406394172abf', // SWYRL_V3_FACTORY
+  multicallAddress: '0xb79bA9375Fc66C4ddF236BeD3D53ef6213aac7B6', // UNISWAP_INTERFACE_MULTICALL
+  quoterAddress: '0x65552047E14028B6c20EB58f305F7663d87013A1', // QUOTER_V2
+  v3MigratorAddress: undefined, // Not deployed for MONAD_MAINNET
+  nonfungiblePositionManagerAddress: '0xa6931259B8921F2ED1E7B6c2E657e82873C195ed', // NONFUNGIBLE_POSITION_MANAGER
+  tickLensAddress: '0x95d4063ad9cEDA0d83428986d23BaA9eD5163F58', // TICK_LENS
+  swapRouter02Address: '0xd8De315eE724CEfD5a4f215daE3d6729e5150a90', // SWAP_ROUTER_02
+  mixedRouteQuoterV1Address: '0xE6c40D7cDc1F1622Ddf2af41ae8c4230A587D133' // MIXED_ROUTE_QUOTER_V1
+}
 
 export const CHAIN_TO_ADDRESSES_MAP: Record<SupportedChainsType, ChainAddresses> = {
   [ChainId.MAINNET]: MAINNET_ADDRESSES,
@@ -315,7 +314,7 @@ export const CHAIN_TO_ADDRESSES_MAP: Record<SupportedChainsType, ChainAddresses>
   [ChainId.ZKSYNC]: ZKSYNC_ADDRESSES,
   [ChainId.MONAD_TESTNET]: MONAD_TESTNET_ADDRESSES,
   [ChainId.MONAD_DEVNET]: MONAD_DEVNET_ADDRESSES,
-  // [ChainId.MONAD_MAINNET]: MONAD_MAINNET_ADDRESSES, // Add when chain is configured
+  [ChainId.MONAD_MAINNET]: MONAD_MAINNET_ADDRESSES,
 }
 
 /* V3 Contract Addresses */

@@ -243,7 +243,7 @@ export class V3PoolProvider implements IV3PoolProvider {
         tickSpacing: tickSpacing,
         initCodeHashManualOverride: SONIC_V3_INIT_CODE_HASH,
       });
-    } else if ([ChainId.MONAD_TESTNET, ChainId.MONAD_DEVNET].includes(this.chainId)) {
+    } else if ([ChainId.MONAD_TESTNET, ChainId.MONAD_DEVNET, ChainId.MONAD_MAINNET].includes(this.chainId)) {
 
       const tickSpacing = getTickSpacing(feeAmount);
       poolAddress = computeV3PoolAddress({

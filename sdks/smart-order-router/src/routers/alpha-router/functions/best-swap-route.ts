@@ -422,7 +422,7 @@ export async function getBestSwapRouteBy(
   // Some test / new chains may not yet have a stable-coin mapping in
   // `usdGasTokensByChain`.  In that case we fall back to the quote token of the
   // best swap and treat all USD gas costs as zero so the router can still run.
-  const skipUsdGasCalc = [ChainId.MONAD_TESTNET, ChainId.MONAD_DEVNET].includes(chainId);
+  const skipUsdGasCalc = [ChainId.MONAD_TESTNET, ChainId.MONAD_DEVNET, ChainId.MONAD_MAINNET].includes(chainId);
 
   const hasUsdToken = !!(
     usdGasTokensByChain[chainId] && usdGasTokensByChain[chainId]![0]

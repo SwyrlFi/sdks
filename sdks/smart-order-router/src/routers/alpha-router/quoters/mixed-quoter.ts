@@ -141,7 +141,7 @@ export class MixedQuoter extends BaseQuoter<MixedRoute> {
     gasModel?: IGasModel<MixedRouteWithValidQuote>
   ): Promise<GetQuotesResult> {
     log.info('Starting to get mixed quotes');
-    if (gasModel === undefined && ![ChainId.MONAD_TESTNET, ChainId.MONAD_DEVNET].includes(this.chainId)) {
+    if (gasModel === undefined && ![ChainId.MONAD_TESTNET, ChainId.MONAD_DEVNET, ChainId.MONAD_MAINNET].includes(this.chainId)) {
       throw new Error('GasModel for MixedRouteWithValidQuote is required to getQuotes');
     }
     if (routes.length == 0) {

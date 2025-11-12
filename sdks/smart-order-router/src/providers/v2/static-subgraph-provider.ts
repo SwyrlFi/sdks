@@ -12,6 +12,7 @@ import {
   USDC_MAINNET,
   USDC_MONAD_TESTNET,
   USDC_MONAD_DEVNET,
+  USDC_MONAD_MAINNET,
   USDC_SONIC,
   USDT_MAINNET,
   USDT_SONIC,
@@ -72,6 +73,10 @@ const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     WRAPPED_NATIVE_CURRENCY[ChainId.MONAD_DEVNET]!,
     USDC_MONAD_DEVNET,
   ],
+  [ChainId.MONAD_MAINNET]: [
+    WRAPPED_NATIVE_CURRENCY[ChainId.MONAD_MAINNET]!,
+    USDC_MONAD_MAINNET,
+  ],
 };
 
 /**
@@ -131,7 +136,7 @@ export class StaticV2SubgraphProvider implements IV2SubgraphProvider {
             tokenB: tokenB,
             stable: false
           });
-        } else if ([ChainId.MONAD_TESTNET, ChainId.MONAD_DEVNET].includes(this.chainId)) {
+        } else if ([ChainId.MONAD_TESTNET, ChainId.MONAD_DEVNET, ChainId.MONAD_MAINNET].includes(this.chainId)) {
           poolAddress = computePairAddress({
             factoryAddress: V2_PAIR_FACTORY_ADDRESS[this.chainId]!,
             tokenA: tokenA,

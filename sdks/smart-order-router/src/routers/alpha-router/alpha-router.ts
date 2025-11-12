@@ -567,6 +567,7 @@ export class AlphaRouter
           break;
         case ChainId.MONAD_TESTNET:
         case ChainId.MONAD_DEVNET:
+        case ChainId.MONAD_MAINNET:
             this.onChainQuoteProvider = new OnChainQuoteProvider(
               chainId,
               provider,
@@ -1029,7 +1030,7 @@ export class AlphaRouter
 
     let v3GasModel: IGasModel<V3RouteWithValidQuote> | undefined;
     let mixedRouteGasModel: IGasModel<MixedRouteWithValidQuote> | undefined;
-    if (![ChainId.MONAD_TESTNET, ChainId.MONAD_DEVNET].includes(this.chainId)) {
+    if (![ChainId.MONAD_TESTNET, ChainId.MONAD_DEVNET, ChainId.MONAD_MAINNET].includes(this.chainId)) {
       [v3GasModel, mixedRouteGasModel] = await this.getGasModels(
         gasPriceWei,
         amount.currency.wrapped,

@@ -13,6 +13,8 @@ export function factoryAddress(chainId?: ChainId): string {
       return '0xCd07Ba03917c8806a0ecfc0783246288B62360b4'
     case ChainId.MONAD_DEVNET:
       return '0xF3A43f6416321715772341081CcF63921be431fc' // MONAD_DEVNET_V3_POOL_DEPLOYER_ADDRESS
+    case ChainId.MONAD_MAINNET:
+      return '0x66ae3f94EB3Ab532cC4F8fC8700f6d7488E40A4f' // SWYRL_V3_POOL_DEPLOYER
     default:
       return FACTORY_ADDRESS
   }
@@ -25,7 +27,9 @@ export function poolInitCodeHash(chainId?: ChainId): string {
     case ChainId.MONAD_TESTNET:
       return '0x96fa0c0344e6345992578dc7aa796e013cc8936d915bdab22970e6589186d66e'
     case ChainId.MONAD_DEVNET:
-      return '0x70a18ff6c63876fee3f6b5f9a1dc47efa7d132e4999d8fe062a8b81afd369954'
+      return '0x9c0dcbe0f8215e47692e186e3307ee853768f2bdce8680e3cc6fcfe1ca1dfe7a'
+    case ChainId.MONAD_MAINNET:
+      return '0x7e6dcaf163badb2918dfe51971699b6a44b70f0cb9104f86f911fd3b3e8b3bcd'
     default:
       return POOL_INIT_CODE_HASH
   }

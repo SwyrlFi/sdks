@@ -93,6 +93,7 @@ export const DEFAULT_ROUTING_CONFIG_BY_CHAIN = (
       };
       case ChainId.MONAD_TESTNET:
       case ChainId.MONAD_DEVNET:
+      case ChainId.MONAD_MAINNET:
         return {
           v2PoolSelection: {
             topN: 3,

@@ -142,7 +142,7 @@ export class V2Quoter extends BaseQuoter<V2Route> {
     );
     const { routesWithQuotes } = await quoteFn(amounts, routes);
     let v2GasModel: IGasModel<V2RouteWithValidQuote> | undefined;
-    if (![ChainId.MONAD_TESTNET, ChainId.MONAD_DEVNET].includes(this.chainId)) {
+    if (![ChainId.MONAD_TESTNET, ChainId.MONAD_DEVNET, ChainId.MONAD_MAINNET].includes(this.chainId)) {
       v2GasModel = await this.v2GasModelFactory.buildGasModel({
         chainId: this.chainId,
         gasPriceWei,

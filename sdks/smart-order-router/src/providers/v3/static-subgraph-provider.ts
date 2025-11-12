@@ -47,6 +47,7 @@ import {
   USDC_MAINNET,
   USDC_MONAD_TESTNET,
   USDC_MONAD_DEVNET,
+  USDC_MONAD_MAINNET,
   USDC_MOONBEAM,
   USDC_OPTIMISM,
   USDC_OPTIMISM_GOERLI,
@@ -216,6 +217,10 @@ const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     WRAPPED_NATIVE_CURRENCY[ChainId.MONAD_DEVNET]!,
     USDC_MONAD_DEVNET,
   ],
+  [ChainId.MONAD_MAINNET]: [
+    WRAPPED_NATIVE_CURRENCY[ChainId.MONAD_MAINNET]!,
+    USDC_MONAD_MAINNET,
+  ],
 };
 
 /**
@@ -298,7 +303,7 @@ export class StaticV3SubgraphProvider implements IV3SubgraphProvider {
             tickSpacing: tickSpacing,
             initCodeHashManualOverride: SONIC_V3_INIT_CODE_HASH,
           });
-        } else if ([ChainId.MONAD_TESTNET, ChainId.MONAD_DEVNET].includes(this.chainId)) {
+        } else if ([ChainId.MONAD_TESTNET, ChainId.MONAD_DEVNET, ChainId.MONAD_MAINNET].includes(this.chainId)) {
           const tickSpacing = this.getTickSpacing(fee)
           poolAddress = computeV3PoolAddress({
             factoryAddress: V3_CORE_FACTORY_ADDRESSES[this.chainId]!,

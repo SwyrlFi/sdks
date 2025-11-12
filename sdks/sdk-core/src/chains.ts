@@ -25,7 +25,7 @@ export enum ChainId {
   ZKSYNC = 324,
   MONAD_TESTNET = 10143,
   MONAD_DEVNET = 31337,
-  // MONAD_MAINNET = [TBD], // Placeholder for future configuration
+  MONAD_MAINNET = 143,
 }
 
 export const SUPPORTED_CHAINS = [
@@ -53,7 +53,7 @@ export const SUPPORTED_CHAINS = [
   ChainId.ZKSYNC,
   ChainId.MONAD_TESTNET,
   ChainId.MONAD_DEVNET,
-  // ChainId.MONAD_MAINNET, // Add when chain ID is confirmed
+  ChainId.MONAD_MAINNET,
 ] as const
 export type SupportedChainsType = (typeof SUPPORTED_CHAINS)[number]
 
